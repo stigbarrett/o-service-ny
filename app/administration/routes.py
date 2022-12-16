@@ -30,10 +30,7 @@ from app.administration.helper import bruger_opl, dan_KMZ_coor, hent_kort
 #from app.tilmelding.helper import hent_kort
 import zipfile
 import codecs
-#hent_tilfojede_kort, sendMails, hent_deltagers_liste, post_picture 
-#from sendgrid import SendGridAPIClient
-#from sendgrid.helpers.mail import Mail
-#from flask_dropzone import Dropzone
+
 
 def unzip(file, pathTemp):
     fil = os.path.join(file, pathTemp)
@@ -41,16 +38,9 @@ def unzip(file, pathTemp):
     if os.path.isdir(filer_ud) is not True:
         os.mkdir(os.path.join(file, "files"))
     with zipfile.ZipFile(fil, 'r') as zip:
-        #kml = zip.open('doc.kml', 'r').read()
-        #navne = zip.namelist()
+        
         zip.extractall(file)
-        #for filer in zip.namelist():
-        #    zip.extract(file)
-        #zip.extractall(pathTemp)
-        #fileEr = 'doc.kml'
-        #fileOmdoeb = 'Doc.kml'
-        #if os.path.exists(os.path.join(pathTemp, fileOmdoeb)):
-        #    os.rename(os.path.join(pathTemp, fileOmdoeb), os.path.join(pathTemp, fileOmdoeb.lower()))
+        
         status = 1
     return status
 
@@ -186,9 +176,7 @@ def administration(hvad):
                 klub_f = request.form.get('klub')
                 dato_obj = datetime.strptime(dato_f, '%d-%m-%Y')
                 dato_f = dato_obj.strftime('%Y-%m-%d')
-                #beskrivelse_f = request.form.get('beskrivelse')
-                #loeb_id = request.form.get('loeb')            
-                #fil_zip = request.files.get('file')
+                
                 fil_kmz = request.files.get('file')
                 #fil_kmz2 = form.file.data
                 
@@ -210,16 +198,9 @@ def administration(hvad):
                 if status1 == 11:
                     pass
 
-                #lobpath=str(dato_f)+str(navn_f)
-                #path_til_fil=(os.path.join(current_app.config['UPLOAD_FOLDER'], lobpath))
-                #checkDir(os.path.join(current_app.config['UPLOAD_FOLDER'], lobpath))
-                #checkDir(path_til_fil)
-                #filename=fil_zip.filename
                 flask_path_til_fil=(os.path.join(current_app.config['UPLOAD_FOLDER_STATIC'], lobpath))
                 #!!! NYT !!!
-                #klubId = db.session.query(Klubber).filter(Klubber.Klubnavn == klub_f).first()
-                #nyt_lob = konkurrence_data(konkurrence=skov_f, konkurrenceDato=dato_f, ansvarligNavn = ansvarlig_f, klubber_id=int(klub_f), 
-                #    konkurrenceType=lob_type_f, brik=emit_f, klarmeldt=klarmeldt_f, kort_download=kort_f)
+                
                 nyt_lob = konkurrence_data(konkurrence=navn_f, konkurrenceDato=dato_f, klubber_id=int(klub_f), pathKonkurrenceFiler=path_til_fil)
                 db.session.add(nyt_lob)
                 db.session.commit()
@@ -409,18 +390,7 @@ def tilfoj_KMZfil():
             status1 = dan_KMZ_coor(path_til_fil, filename)
             if status1 == 11:
                 pass
-            #if status == 1:
-            #    file_ext = os.path.splitext(filename)[1]
-            #    filnavn = os.path.splitext(filename)[0]
-            #    for root, dirs, files in os.walk(path_til_fil):
-            #        for file in files:
-            #            if file.endswith(".pdf"):
-            #                file_ext = os.path.splitext(file)[1]
-            #                filnavn = os.path.splitext(file)[0]
-            #                kortJpg = add_kort2(os.path.join(path_til_fil, file), filnavn, path_til_fil)
-            #                ny_bane = Baner(kort_navn_pdf=filename, kort_navn_png=kortJpg, path_filer=flask_path_til_fil, kokurrence_id=loeb_id, bane_beskrivelse=beskrivelse_f, banenavn=bane_f, )
-            #                db.session.add(ny_bane)
-            #    db.session.commit()
+            
             return redirect(url_for('administration.tilfoj_KMZfil'))
 
     elif request.method == "GET":
@@ -431,9 +401,7 @@ def tilfoj_KMZfil():
 def tilfoj_kort():
     funktion = 2
     form=TilfojKort(form_name='TilfojKort')
-    #form.state.choices = [(row.ID, row.Name) for row in State.query.all()]
-    #form.loeb.choices = [(row.id, row.konkurrence) for row in konkurrence_data.query.all()]
-    #form.bane.choices = [(row.id, row.banenavn) for row in Baner.query.all()]
+    
     loeb_alle = []
     loeb = {}
     
@@ -694,11 +662,8 @@ def tilfoj_resultat():
                 #x=0
                 #samletAntal = len(deltager['Tider']) + 2
                 gammel_sekunder = 0
-                
                     
                 antal = len(deltager['Tider'])
-                #for tid in deltager['Tider']:
-                #runde = range(len(deltager['Tider']) + 2)
                 
                 post_navn = 'Start'
                 postnr = 0
@@ -751,8 +716,6 @@ def tilfoj_resultat():
                 profile_id = profilId
                 baneresultat_id = baneresultatId
                 konkurrence_id = int(konkurrence_fm)
-                #x=x+1
-
                     
                 deltager_post = Poster(post_navn=post_navn, postnr=postnr, postkode=postkode, tid_til_sek=tid_til_sek, tid_til_ialt_sek=tid_til_ialt_sek, baneresultat_id=baneresultat_id, status=status, status_id=status_id, bane_id=bane_id, profile_id=profile_id,konkurrence_id=konkurrence_id)
                 db.session.add(deltager_post)
@@ -762,7 +725,6 @@ def tilfoj_resultat():
             print('stig')
 
         return render_template("administration/administration.html", funktion=funktion, user=current_user, klubber=klubber, loeb_alle=loeb_alle, form=form)
-    
 
     elif request.method == "GET":
         return render_template("administration/administration.html", funktion=funktion, user=current_user, klubber=klubber, loeb_alle=loeb_alle, form=form)
@@ -802,7 +764,7 @@ def klarmeld():
         if form.validate_on_submit():
             if form.submit:
                 loeb_id = request.form.get('loeb')
-                klarmeldlob = Loeb.query.filter_by(id=loeb_id).first()
+                klarmeldlob = konkurrence_data.query.filter_by(id=loeb_id).first()
                 klarmeldlob.klarmeldt = True
                 db.session.commit()
                 loeb_alle = []
@@ -824,7 +786,7 @@ def klarmeld():
         #   loeb_alle = []
         loeb = {}
         #lob = Loeb.query.filter(Loeb.dato>=date.today(), Loeb.klarmeldt == True).order_by(Loeb.dato).all()
-        for lob in Loeb.query.filter(Loeb.dato>=date.today(), Loeb.klarmeldt == False).order_by(Loeb.dato).all():
+        for lob in konkurrence_data.query.filter(konkurrence_data.konkurrenceDatoSlutdato>=date.today(), konkurrence_data.klarmeldt == False).order_by(konkurrence_data.konkurrenceDatoSlutdato).all():
             
             loeb[lob.id] = str(lob.skov) + ' ' + str(lob.dato)
             #loeb['skov'] = lob.skov
