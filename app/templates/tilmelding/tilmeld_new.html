@@ -1,0 +1,386 @@
+{% extends "base.html" %} {% block title %}Tilmeld{% endblock %}
+{% from 'bootstrap5/nav.html' import render_breadcrumb_item %}
+
+
+
+{% block content %}
+{% block app_content%}
+<link rel="stylesheet" href="{{ url_for('static', filename='tab.css') }}">
+<link rel="stylesheet" href="{{ url_for('static', filename='css/autoComplete.01.css') }}">
+<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/bs5/dt-1.11.4/datatables.min.css"/>
+    <link href="https://cdn.jsdelivr.net/npm/simple-datatables@latest/dist/style.css" rel="stylesheet" type="text/css">
+    <!--<h1 align="center">{% block header %}Tilmeld{% endblock %}</h1>
+	<div class="row">-->
+
+    
+    <section class="bg-side-1 py-10">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-7 col-md-12">
+                    <form class="card" autocomplete="off" id="form1">
+                        {{ form.hidden_tag() }}
+                        <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+                        <div class="card-header ">
+                            {% if antallob == 1 %}
+                                <input type="hidden" name="loebhidden" id="loebhidden" value="{{ valgtlob }}"/>
+                                <input type="hidden" name="deltagerhidden" id="deltagerhidden" value="{{ tilmelderId }}"/>
+                                <input type="hidden" name="navnelistehidden" id="navnelistehidden" value="{{ navneliste }}"/>
+                                <h4 class="card-header border-bottom">Tilmelding til {{ lobtekst }}</h4>
+                            {% else %}
+                                <!--<form action="/Tilmeld/" method="POST">-->
+                                <input type="hidden" name="loebhidden" id="loebhidden" value="valgt"/>
+                                <input type="hidden" name="deltagerhidden" id="deltagerhidden" value="{{ tilmelderId }}"/>
+                                <label class="form-label">Vælg løb</label>
+                                    <select class="" data-customclass="form-select" onchange=change() id="loeb" name="loeb">
+                                        {% for key, value in loeb_alle.items() %}
+                                            <option value={{ key }}>{{ value }}</option>
+                                        {% endfor %}
+                                    </select>
+                                    <button class="btn btn-primary" name='submit_1' id="submit_3" value="valgt" type="submit">Klik når du har valgt løb</button>
+                                <!--</form>-->
+                            {% endif %}
+                        </div>
+                        <div class="card-body">
+                            {% if antallob == 1 %}
+                            <div class="row gy-5">
+                                {% if deltagere == None %}
+                                    <div class="col-md-4">
+                                        <label class="form-label">(Fornavn og Efternavn)</label>
+                                        <input class="form-control" type="text" name="navn" id="navn" value="{{ navn }}" {% if navn %}readonly{% endif %} required data-validate-field="navn">
+                                    </div>
+                                {% else %}
+                                    <input type="hidden" name="loberhidden" id="loberhidden" value="{{ tilmeldtId }}"/>
+                                    <input type="hidden" name="tilmeldthidden" id="tilmeldthidden" value="{{ tilmeldt_status }}"/>
+                                    <div class="col-md-4">
+                                        <label class="form-label">(Fornavn og Efternavn)</label>
+                                        <div>
+                                        <input class="form-control" type="text" name="navn" id="autoComplete1" {% if navn %}placeholder=''{% else %}placeholder="Begynd at taste navnet ..."{% endif %} value="{{ navn }}" {% if navn %}readonly{% endif %} required data-validate-field="autoComplete1">
+                                        
+                                        </div>
+                                        <!--<input class="form-control basicAutoComplete" type="text" autocomplete="off">-->
+                                        <!--<input class="form-select-sm" id="js-single" name="navn">-->
+                                    </div>
+
+                                {% endif %}
+                                
+                                <div class="col-md-4">
+                                    <label class="form-label">Vælg klub</label>
+                                    <div class="col-md-4">
+                                        
+                                        <select class="profile-country-choices" data-customclass="form-select" id="klub" name="klub">
+                                            {% for key1, value1 in klubber.items() %}
+                                                {% if klub in key1 %}
+                                                <option value="{{ key1 }}" selected>{{ value1 }}</option>
+                                                {% else %}
+                                                <option value= {{ key1 }}>{{ value1 }}</option>
+                                                {% endif %}
+                                            {% endfor %}
+                                        </select>
+                                    </div>
+                                    
+                                </div>
+                                <div class="col-md-4">
+                                    <label class="form-label">Email</label>
+                                    <input class="form-control" type="text" id="email" name="email" value="{{ email }}" {% if email %}readonly{% endif %} placeholder="Email"/>
+                                </div>
+                                <div class="col-md-4">
+                                    <label class="form-label">Briknummer</label>
+                                    <input type="text" id="briknummer" name="briknummer" value="{{ brik }}" {% if brik %}readonly{% endif %} class="form-control" placeholder="briknummer"/>
+                                </div>
+                                <div class="col-md-4">
+                                    <label class="form-label">Telefonnummer</label>
+                                    <input type="text" id="telefonnummer" name="telefonnummer" value="{{ tlfnummer }}" {% if tlfnummer %}readonly{% endif %} class="form-control" placeholder="Telefonnummer"/>
+                                </div>
+                                
+                                <div class="col-md-4">
+                                    <label class="form-label">Valgt Bane</label>
+                                    <input class="form-control" type="text" id="bane" name="bane" value="" placeholder="Bane" readonly>
+                                </div>
+                                <br />
+                                <div align="center">
+                                    <button class="btn btn-secondary" name='submit_1' id="submit_2" value="slut" type="submit">Se alle tilmeldte</button>
+                                    <button class="btn btn-info" name='submit_1' id="submit_3" value="kort" type="submit">Download bestilte kort</button>
+                                    
+                                    
+                                    <button class="btn btn-primary" name='submit_1' id="submit_1" value="" onclick=clear_data(this) type="button" {% if erKort %}disabled{% endif %}>Tilmeld</button>
+                                    
+                                </div>
+                            </div>
+                            {% endif %}
+                        </div>
+                        
+                    </form>
+                        <br>
+                        <div class="card">
+                            <div class="card-header">
+                                <h4 class="card-header border-bottom">Liste over dine tilmeldinger til løbet</h4>
+                            </div>
+                            <div class="card-body">
+                                {% if deltagere %}
+                                <div class="table-responsive">
+                                    <table id="data" class="table table-striped">
+                                        <thead>
+                                            <th>Navn</th>
+                                            <th>Klub</th>
+                                            <th>Bane</th>
+                                            <th>Brik</th>
+                                        </thead>
+                                        <tbody>
+                                        
+                                        </tbody>
+                                    </table>
+                                </div>
+								{% else %}
+								<h3 class="h4 mb-0">Du har endnu ingen tilmeldte til det valgte løb</h3>
+                                {% endif %}
+                            </div>
+                        </div>
+                    </div>	
+                        {% if erKort %}
+                        <div class="col-lg-5 col-md-5">
+                            <div class="card">
+                                <div class="card-header border-buttom">
+                                    <h4 class="card-header">Vælg den bane du vil se</h4>
+                                </div>
+                                <div class="card-body" height="100%">
+                                    <ul class="nav nav-tabs" id="myTab" data-bs-tabs="tabs" role="tablist">
+                                    {% for stripkort in kortbane %}
+                                        <li class="nav-item"><a class="nav-link {% if loop.index == 1 %}active{% endif %}" data-bs-toggle="tab" href="#tab{{ loop.index }}" role="tab" aria-controls="tab{{ loop.index }}" aria-selected="false">Bane {{ loop.index }}</a></li>
+                                    {% endfor %}
+                                    </ul>
+                                    <div class="tab-content" id="myTabContent"> 
+                                    {% for dict_item in kort %}
+                                        <div class="tab-pane fade {% if loop.index == 1 %}show active{% endif %}" id="tab{{ loop.index }}" role="tabpanel">
+                                                <img src="{{ url_for('static', filename=dict_item['filen']) }}" class="card-img-top" height="100%" alt="...">
+                                                
+                                            <div align="center">
+                                                <h5 class="card-title">{{ dict_item['banenavn'] }}</h5>
+                                                <p class="card-text">{{ dict_item['beskrivelse'] }}</p>
+                                                <a href="#" id="14" class="btn btn-primary" onclick="reply_click(this)" data-product-name="{{ dict_item['banenavn'] }}">Vælg {{ dict_item['banenavn'] }}</a>
+                                            </div>
+                                        </div>
+                                    {% endfor %}
+                                </div>
+                            </div>
+                        </div>
+                        {% else %}
+                        <div class="col-lg-5 col-md-5">
+                            <div class="card">
+                                <div class="card-header">
+                                    Der er ingen kort til download til dette løb. Kort udleveres ved start.
+                                </div>
+                            </div>
+                        </div>
+                        {% endif %}
+                    </div>
+                </div>
+		    </div>
+	    </div>
+    </section>
+    <section class="bg-side-2 py-2">
+                    
+        <div class="container"> 
+            <nav style="--bs-breadcrumb-divider: '->'" aria-label="breadcrumb">
+                
+                <ol class="breadcrumb">
+                   
+                    {% block breadcrumb %}
+                    
+                        {{ render_breadcrumb_item('tilmelding.tilmeld', 'Opret ny tilmelding') }}
+                        {{ render_breadcrumb_item('tilmelding.hent_GPX_fil', 'Tilføj GPX fil') }}
+                      
+                    {% endblock breadcrumb %}
+                    
+                </ol>
+                
+            </nav>
+        </div>
+        
+    </section>
+
+{% endblock app_content%}
+{% endblock %}
+{% block scripts %}
+    {{ super() }}
+    <script src="https://cdn.jsdelivr.net/npm/simple-datatables@latest" type="text/javascript"></script>
+    <script type="text/javascript" src="https://cdn.datatables.net/v/bs5/dt-1.11.4/datatables.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@tarekraafat/autocomplete.js@10.2.6/dist/autoComplete.min.js"></script>
+    <script src="{{ url_for('static', filename='js/forms-autocomplete.js') }}"></script>-->
+    <script src="https://cdn.jsdelivr.net/gh/xcash/bootstrap-autocomplete@v2.3.7/dist/latest/bootstrap-autocomplete.min.js"></script>-->
+    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.js"></script>-->
+    <script src="https://code.jquery.com/ui/1.13.1/jquery-ui.js"></script>
+
+    <script type="text/javascript">
+        function reply_click(element) {
+            document.getElementById('bane').value = element.getAttribute('data-product-name');
+            document.getElementById('submit_1').disabled = false
+        };       
+        
+        function clear_data(element) {
+            var elements = document.getElementById("form1").elements;
+                //console.log('rens data');
+                for (var i = 0, element; element = elements[i++];) {
+                    if (element.type === "text")
+                        element.value = ''
+                };
+            };
+        
+        document.getElementById("submit_1").onclick = function () {
+            add_tilmeldte();
+            tableActions();
+        }
+
+        function initTable () {
+                var tilmelderId = document.getElementById("deltagerhidden").value;
+                var loebId = document.getElementById("loebhidden").value;
+                var send = {
+					konkurrence: loebId,
+                    tilmelder: tilmelderId 
+				};
+            return jQuery('#data').DataTable( {
+                    language: {
+                        url: '//cdn.datatables.net/plug-ins/1.11.4/i18n/da.json'
+                    },
+                    destroy: true,
+                    ajax: {
+                        url: "{{url_for('tilmelding.get_deltagere')}}",
+                        type: "GET",
+                        data: send,
+                        datatype: "JSON",
+                        dataSrc: "data",
+                        contentType: "application/json"
+                    },
+                    columns: [
+                    {data: 'Navn'},
+                    {data: 'Klub'},
+                    {data: 'Bane'},
+                    {data: 'Brik'}
+                    ],
+                });
+                //console.log("2. gennemløb");
+            };
+
+        function nyTable () {
+            var table = initTable();
+            };
+            
+        function tableActions () { 
+            setTimeout(function() {
+                var table = initTable();
+                //document.getElementById('navn').value = '';
+                document.getElementById('email').value = '';
+                document.getElementById('briknummer').value = '';
+                document.getElementById('telefonnummer').value = '';
+                document.getElementById('bane').value = '';
+                document.getElementById('autoComplete1').value = '';
+                nyTable();}, 2000);
+            };
+
+        async function autoAction (aktivt_loeb) {
+            //console.log('stig');
+            let users = await getUsers(aktivt_loeb);
+            console.log(users);
+            const autoCompleteJS1 = new autoComplete({
+                selector: "#autoComplete1",
+                data: {
+                    src: users,
+                    keys: ['id','navn'],
+                    cache: true,
+
+                },
+                resultItem: {
+                    highlight: true,
+                },
+                events: {
+                    input: {
+                        selection: (event) => {
+                            const selection = event.detail.selection.value;
+                            autoCompleteJS1.input.value = selection.navn;
+                            getUserData(selection.id);  
+                        }
+                    }
+                }
+            });
+        };
+
+        function add_tilmeldte() {
+            csfr_token = "{{ csrf_token() }}";
+            loebId = document.getElementById("loebhidden").value;
+            tilmelderId = document.getElementById("deltagerhidden").value;
+            navn = document.getElementById("autoComplete1").value;
+            klub = document.getElementById("klub").value;
+            email = document.getElementById("email").value;
+            briknummer = document.getElementById("briknummer").value;
+            telefonnummer = document.getElementById("telefonnummer").value;
+            tilmeldtId = document.getElementById("loberhidden").value;
+            tilmeldt_status = document.getElementById("tilmeldthidden").value;
+            bane = document.getElementById("bane").value;
+            let url = "{{url_for('tilmelding.add_tilmeld1')}}";
+            console.log(loebId);
+            fetch(url, {
+                    method: "POST",
+                    headers: new Headers({
+                        "Content-Type": "application/json",
+                        'X-CSRF-TOKEN':  csfr_token
+                    }),
+                    body: JSON.stringify({
+                        loebId: loebId,
+                        tilmelderId: tilmelderId,
+                        navn: navn,
+                        klub: klub,
+                        bane: bane,
+                        email: email,
+                        briknummer: briknummer,
+                        telefonnummer: telefonnummer,
+                        tilmeldtId: tilmeldtId,
+                        tilmeldt_status: tilmeldt_status,
+
+                    }),
+                    cache: "no-cache",
+                    
+                })
+                .then(alert('Din tilmelding er oprettet!'));
+        };
+
+        async function getUsers(aktivt_loeb) {
+            //let url = "{{url_for('tilmelding.get_tilmeldte', aktivt_loeb='aktivtlob')}}".replace("aktivtlob", aktivt_loeb);
+            let url = "{{url_for('tilmelding.get_alle_tilmeldte', aktivt_loeb='aktivtlob')}}".replace("aktivtlob", aktivt_loeb);
+            try {
+                let res = await fetch(url);
+                console.log("Stig")
+                console.log(res);
+                return await res.json();
+               
+            } catch (error) {
+                console.log(error);
+            }
+        };
+
+        async function getUserData(user) {
+            let url = "{{url_for('tilmelding.get_tilm_deltager', user_id='idher')}}".replace("idher", user);
+            try {
+                let deltdata = await fetch(url);
+                let userdata = await deltdata.json();
+                document.getElementById('email').value = await userdata[0].email;
+                document.getElementById('briknummer').value = await userdata[0].briknummer;
+                document.getElementById('klub').value = await userdata[0].klubid;
+                document.getElementById('telefonnummer').value = await userdata[0].telefonnummer;
+                document.getElementById('loberhidden').value = await userdata[0].tilmeldtId;
+                //return await deltdata.json();
+                //console.log(userdata);
+            } catch (error) {
+                console.log(error);
+            }
+        };
+
+        jQuery(document).ready(function() {
+            nyTable();
+            aktivt_loeb = document.getElementById("loebhidden").value;
+            //console.log('Her');
+            autoAction(aktivt_loeb);
+        });
+
+    </script>
+
+
+{% endblock scripts %}

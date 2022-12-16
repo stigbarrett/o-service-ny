@@ -1,0 +1,104 @@
+{% extends "base.html" %}
+{% from 'bootstrap5/nav.html' import render_nav_item, render_breadcrumb_item %}
+{% from 'bootstrap5/nav.html' import render_breadcrumb_item %}
+{% from 'bootstrap5/form.html' import render_form, render_field %}
+
+<div id="layoutDefault">
+    <div id="layoutDefault_content">
+        <main>    
+            {% block navbar %}
+			<header class="header navbar navbar-expand-lg bg-light">
+				<div class="container px-3">
+						  <a href="index.html" class="navbar-brand pe-3">
+							<img src="{{ url_for('static', filename='assets_old/img/logo.png') }}" width="47" alt="O-service">
+							O-service
+						  </a>
+					<div id="navbarNav" class="offcanvas offcanvas-end">
+						<div class="offcanvas-header border-bottom">
+						  <h5 class="offcanvas-title">Menu</h5>
+						  <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+						</div>
+						<div class="offcanvas-body">
+							<ul class="navbar-nav me-auto mb-2 mb-lg-0">
+							<li class="nav-item">{{ render_nav_item('main.explore', 'Forside') }}</li>
+							<li class="nav-item">{{ render_nav_item('main.index', 'O-Microblog') }}</li>
+							<li class="nav-item dropdown">
+							  <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" data-bs-auto-close="outside" aria-expanded="false">Tilmeldinger</a>
+							  <ul class="dropdown-menu">
+								<li>
+								  <a href="#" class="dropdown-item">{{ render_nav_item('tilmelding.tilmeld', 'Tilmelding') }}</a>
+								</li>
+								<li class="dropdown">	
+								  <a href="#" class="dropdown-item dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">Tilmeldinger</a>
+								  <ul class="dropdown-menu">
+									<li><a class="dropdown-item"></a></li>
+									<li><a class="dropdown-item">Another action</a></li>
+									<li><a class="dropdown-item">Something else here</a></li>
+									<li><a class="dropdown-item">Yet another link</a></li>
+								  </ul>
+								</li>
+								<li><a class="dropdown-item"> Another action</a></li>
+								<li><a class="dropdown-item">Something else here</a></li>
+							  </ul>
+							</li>
+							
+							<li class="nav-item dropdown">
+								<a class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Resultater</a>	
+								<div class="dropdown-menu">
+									<div class="d-lg-flex pt-lg-3">
+										<div class="mega-dropdown-column">
+										<ul class="list-unstyled mb-3">
+											<li><a class="dropdown-item py-1">{{ render_nav_item('resultater.resultater', 'Resultater') }}</a></li>
+											<li><a class="dropdown-item py-1">About v.2</a></li>
+										</ul>
+										</div>
+									</div>
+								</div>
+							</li>
+							<li class="nav-item dropdown">
+								<a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown" aria-current="page">Statistik</a>
+								<ul class="dropdown-menu">
+									<li><a class="dropdown-item">{{ render_nav_item('main.explore', 'Statistik') }}</a></li>
+								</ul>
+							</li>
+							</ul>
+							
+						</div>
+					</div>
+					<div class="form-check form-switch mode-switch pe-lg-1 ms-auto me-4" data-bs-toggle="mode">
+						<input type="checkbox" class="form-check-input" id="theme-mode">
+						<label class="form-check-label d-none d-sm-block" for="theme-mode">Light</label>
+						<label class="form-check-label d-none d-sm-block" for="theme-mode">Dark</label>
+					</div>
+					{% if current_user.is_anonymous %}
+					<a href="{{ url_for('auth.login') }}" class="btn btn-primary btn-sm fs-sm rounded my-3 my-lg-0">
+								<i class="bx bx-user fs-lg me-2"></i>
+								{{ _('Login') }}
+							  </a>
+					{% else %}
+					<a href="{{ url_for('main.user', username=current_user.username) }}" class="btn btn-primary btn-sm fs-sm rounded my-3 my-lg-0">
+								<i class="bx bx-user fs-lg me-2"></i>
+								{{ _('Profile') }} 
+							  </a>
+					<a href="{{ url_for('auth.logout') }}" class="btn btn-primary btn-sm fs-sm rounded my-3 my-lg-0">
+								<i class="bx bx-user fs-lg me-2"></i>
+								 {{ _('Logout') }}
+							  </a>
+					{% endif %}
+					<button type="button" class="navbar-toggler" data-bs-toggle="offcanvas" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+						<span class="navbar-toggler-icon"></span>
+					</button>
+				</div>
+			</header>
+			{% endblock navbar %}
+		
+        </main>
+    </div>
+	{% block footer %}
+		{{ super() }}
+	{% endblock footer %}
+    {% block scripts %}
+        {{ super() }}
+
+    {% endblock scripts %}
+    

@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+{% extends "base.html" %}
+
+{% block app_content %}
+<link rel="stylesheet" href="{{ url_for('static', filename='tab.css') }}">
+<link rel="stylesheet" href="{{ url_for('static', filename='css/autoComplete.01.css') }}">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tarekraafat/autocomplete.js@10.2.7/dist/css/autoComplete.02.min.css">
+<!--<script src="https://code.jquery.com/jquery-3.6.1.js" integrity="sha256-3zlB5s2uwoUzrXK3BT7AX3FyvojsraNFxCc2vC/7pNI=" crossorigin="anonymous"></script>-->
+<script src="https://cdn.jsdelivr.net/npm/@tarekraafat/autocomplete.js@10.2.7/dist/autoComplete.min.js"></script>
+<!--<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/bs5/dt-1.11.4/datatables.min.css"/>-->
+<!--<link href="https://cdn.jsdelivr.net/npm/simple-datatables@latest/dist/style.css" rel="stylesheet" type="text/css">-->
+<!-- Page content -->
+<!-- section giver luft under menu -->
+
+
+<h1 class="text-nowrap mb-md-4 pe-md-5"></h1>
+
+<section class="container mt-2 mt-sm-3 py-md-3 py-lg-5">
+    <div class="row">
+        <div class="col-xl-12 col-lg-12">
+            
+                <div class="pe-xl-5">
+                    {% if kontrol == 1 %}
+                    <div class="masonry-grid row row-cols-sm-2 row-cols-1 g-4">
+                        {% include 'tilmelding/_GPX_fil.html' %}
+                    {% else %}
+                    <div class="masonry-grid row row-cols-sm-1 row-cols-1 g-4">
+                        {% include 'tilmelding/_GPX_kort.html' %}
+                    </div>
+                    <div class="masonry-grid row row-cols-sm-1 row-cols-1 g-4">
+                        {% include 'tilmelding/_GPX_Postoversigt.html' %}
+                    </div> 
+                    {% endif %}  
+                </div>
+            
+        </div>
+    </div>
+</section>
+{% endblock app_content %}
+
+
+{% block scripts %}
+    {{ super() }}
+    
+    <!--<script src="https://cdn.jsdelivr.net/npm/simple-datatables@latest" type="text/javascript"></script>
+    <script src="https://code.jquery.com/jquery-3.6.1.js" integrity="sha256-3zlB5s2uwoUzrXK3BT7AX3FyvojsraNFxCc2vC/7pNI=" crossorigin="anonymous"></script>-->
+    
+    
+    <!--<script type="text/javascript" src="https://cdn.datatables.net/v/bs5/dt-1.11.4/datatables.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@tarekraafat/autocomplete.js@10.2.6/dist/autoComplete.min.js"></script>-->
+    
+    <!--<script src="{{ url_for('static', filename='js/forms-autocomplete.js') }}"></script>-->
+    <!--<script src="https://cdn.jsdelivr.net/gh/xcash/bootstrap-autocomplete@v2.3.7/dist/latest/bootstrap-autocomplete.min.js"></script>-->
+    <!--<script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.js"></script>
+    
+    <script src="https://code.jquery.com/ui/1.13.1/jquery-ui.js"></script>-->
+    <script src="https://code.jquery.com/jquery-3.6.1.js" integrity="sha256-3zlB5s2uwoUzrXK3BT7AX3FyvojsraNFxCc2vC/7pNI=" crossorigin="anonymous"></script>
+    
+    <script src="{{ url_for('static', filename='assets/vendor/shufflejs/dist/shuffle.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='assets/vendor/imagesloaded/imagesloaded.pkgd.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='assets/vendor/lightgallery/lightgallery.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='assets/vendor/lightgallery/plugins/video/lg-video.min.js') }}"></script>
+    
+    
+    <script charset="utf-8" type="text/javascript">
+
+        $(function() {
+        
+            // jQuery selection for the 2 select boxes
+            var dropdown = {
+                loeb: $('#loeb'),
+                baner: $('#baner')
+            };
+        
+            // call to update on load
+            updateCounties();
+        
+            // function to call XHR and update county dropdown
+            function updateCounties() {
+                var send = {
+                    loeb: dropdown.loeb.val()
+                };
+                dropdown.baner.attr('disabled', 'disabled');
+                dropdown.baner.empty();
+                $.getJSON("{{ url_for('administration._get_baner') }}", send, function(data) {
+                    data.forEach(function(item, index) {
+                        console.log(item);
+                        dropdown.baner.append(
+                                $('<option>', {
+                                    value: item[0],
+                                    text: item[1]
+                                })
+                        );
+    
+                        if (index = 0) {
+                            console.log(item);
+                            updateBaner(item[0]);
+                            }
+                    })
+                    dropdown.baner.removeAttr('disabled');
+                });
+            };
+    
+            function updateBaner(item) {
+                console.log(item);
+                var send = item;
+                $.getJSON("{{ url_for('administration._get_beskeder') }}", send, function(data) {
+                                $('#beskrivelse').val(data);
+                            });
+            };
+        
+            // event listener to state dropdown change
+            dropdown.loeb.on('change', function() {
+                updateCounties();
+            });
+        
+        });
+
+        async function autoAction () {
+            let users = await getUsers();
+            console.log("her kommer users");
+            console.log(users);
+            const autoCompleteJS1 = new autoComplete({
+                selector: "#autoComplete1",
+                wrapper: true,
+                data: {
+                    src: users,
+                    keys: ['id','Navn'],
+                    cache: true,
+                },
+                placeholder: "Start indtast....",
+                resultItem: {
+                    highlight: true,
+                },
+                events: {
+                    input: {
+                        selection: (event) => {
+                            const selection = event.detail.selection.value;
+                            //console.log("det er data");
+                            //console.log(selection.Navn);
+                            autoCompleteJS1.input.value = selection.Navn;
+                            getUserData(selection.id);  
+                        }
+                    }
+                }
+            });
+        };
+
+        async function getUsers() {
+            //let url = "{{url_for('tilmelding.get_tilmeldte', aktivt_loeb='aktivtlob')}}".replace("aktivtlob", aktivt_loeb);
+            let url = "{{url_for('tilmelding.profiler')}}";
+            try {
+                let res = await fetch(url);
+                console.log("Stig")
+                console.log(res);
+                return await res.json();
+               
+                } catch (error) {
+                    console.log(error);
+                }
+            };
+
+        async function getUserData(profil) {
+            let url = "{{url_for('tilmelding.profildata', profil_id='idher')}}".replace("idher", profil);
+            try {
+                let deltdata = await fetch(url);
+                let userdata = await deltdata.json();
+                
+                document.getElementById('klub').value = await userdata[0].klubid;
+                
+                //return await deltdata.json();
+                //console.log(userdata);
+            } catch (error) {
+                console.log(error);
+            }
+        };
+
+        $(document).ready(function() {
+            console.log('Her');
+            autoAction();
+        });
+        
+</script>
+    
+    
+{% endblock scripts %}

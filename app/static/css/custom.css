@@ -1,0 +1,42 @@
+@charset "UTF-8";
+
+:root {
+	--bs-custom-rgb: #17A2B8;
+}
+
+.bg-side-1 {
+  background-color: #EDEEC0 !important;
+}
+
+.bg-side-2 {
+  background-color: #D0C88E !important;
+}
+
+.bg-side-3 {
+  background-color: #C46D5E !important;
+}
+
+.bg-side-4 {
+  background-color: #17A2B8 !important;
+}
+
+.bg-side-5 {
+  background-color: #495159 !important;
+}
+
+.body {
+	background-color: #495159;
+}
+
+.bg-dark {
+  background-color: #17A2B8 !important;
+}
+
+.footer {
+  color: #17A2B8 !important;
+}
+
+.bg-dark {
+  --bs-bg-opacity: 1;
+  background-color: rgba(var(--bs-custom-rgb), var(--bs-bg-opacity)) !important;
+}

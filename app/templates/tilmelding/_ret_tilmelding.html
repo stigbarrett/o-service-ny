@@ -1,0 +1,118 @@
+<!-- Item -->
+<div class="masonry-grid-item col pb-2 pb-lg-3">
+	<article class="card">
+	  <div class="card-body">
+		{% if antallob == 1 %}
+			<input type="hidden" name="loebhidden" id="loebhidden" value="{{ valgtlob }}"/>
+			<input type="hidden" name="deltagerhidden" id="deltagerhidden" value="{{ tilmelderId }}"/>
+			<input type="hidden" name="navnelistehidden" id="navnelistehidden" value="{{ navneliste }}"/>
+			<h3 class="h4">Rette tilmeldte til {{ lobtekst }}</h3>
+		{% endif %}
+		{% if (current_user.is_anonymous == True and dropdowndata|length > 1) %}
+			{% include 'tilmelding/_anonym.html' %}
+		{% endif %}
+		<p class="mb-4">
+			<form class="row g-4 needs-validation" method="post" novalidate>
+				<input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+					<div class="col-sm-6">
+						<label for="navn" class="form-label fs-base">Vælg løber der skal rettes</label>
+						<select class="form-select form-select-lg" data-customclass="form-select" id="navn" name="navn" required>
+							{% if dropdowndata != '' %}
+							{% for key1, value1 in dropdowndata.items() %}
+								{% if loop.first %}
+								<option value= "" disabled selected>Vælg løber</option>
+								{% endif %}
+								<option value= "{{ key1 }}">{{ value1 }}</option>
+							{% endfor %}
+							{% endif %}
+						</select>
+						<div class="invalid-feedback">Vælg et navn fra listen!</div>
+					</div>
+
+					
+					<div class="col-sm-6">
+						<label for="klub" class="form-label fs-base">Vælg klub</label>
+						<select class="form-select form-select-lg" data-customclass="form-select" id="klub" name="klub" required readonly>
+							{% for key1, value1 in klubber.items() %}
+								
+								<option value= "{{ key1 }}">{{ value1 }}</option>
+								
+							{% endfor %}
+						</select>
+						<div class="invalid-feedback">Vælg en klub fra listen!</div>
+					</div>
+					<div class="col-sm-6">
+						<label for="email" class="form-label fs-base">Email</label>
+						<input class="form-control form-control-lg" type="text" id="email" name="email" value="{{ email }}" {% if email %}readonly{% endif %} placeholder="Email" required>
+						<div class="invalid-feedback">Indtast en valid email adresse!</div>
+					</div>
+					<div class="col-sm-6">
+						<label for="briknummer" class="form-label fs-base">Briknummer</label>
+						<input type="text" id="briknummer" name="briknummer" value="{{ brik }}" {% if brik %}readonly{% endif %} class="form-control form-control-lg" placeholder="briknummer"/>
+					</div>
+					<div class="col-sm-6">
+						<label for="telefonnummer" class="form-label fs-base">Telefonnummer</label>
+						<input type="text" id="telefonnummer" name="telefonnummer" value="{{ tlfnummer }}" {% if tlfnummer %}readonly{% endif %} class="form-control form-control-lg" placeholder="Telefonnummer"/>
+					</div>
+					<div class="col-sm-6">
+						<label for="lobbane" class="form-label fs-base">Valgt Bane</label>
+						<input type="text" id="lobbane" name="lobbane" value="{{ bane }}" class="form-control form-control-lg" placeholder="Bane" readonly>
+					</div>
+					<input type="hidden" name="lobbane_id" id="loebbane_id" value="{{ bane_id }}"/>
+					<!--<div class="col-sm-6">
+						<label for="flere" class="form-label fs-base">Tilmeld flere?</label>
+						<input class="form-control form-control-lg" type="text" id="flere" name="flere" value="" placeholder="Bane" readonly>
+					</div>-->
+					
+					<div class="col-sm-12 text-center">
+						<a class="btn btn-secondary" href="{{ url_for('tilmelding.alleTilmeldte') }}" role="button">Se alle tilmeldte</a>
+						<!--<button class="btn btn-secondary" name='submit_1' id="submit_2" value="slut" type="submit">Se tilmeldte</button>-->
+						<!--<button class="btn btn-info" name='submit_1' id="submit_3" value="kort" type="submit">Download kort</button>-->
+						<button class="btn btn-info" name='submit_2' id="submit_2" value="kort" type="submit">Download bestilte kort</button>
+						<!--<button class="btn btn-primary" name='submit_1' id="submit_1" value="" onclick=clear_data(this) type="button" {% if erKort %}disabled{% endif %}>Tilmeld</button>-->
+						<button class="btn btn-warning bg-gradient" name='submit_1' id="submit_1" value="" type="submit">Ret</button>
+					</div>
+				
+			</form>
+		</p>
+	</article>
+</div>
+<script type="text/javascript">
+	function reply_click(element) {
+		document.getElementById('lobbane').value = element.getAttribute('data-product-name');
+		document.getElementById('submit_1').disabled = false
+	};       
+	
+	
+	document.getElementById("navn").onchange = function() {hentValgtLoberData()};
+
+	function hentValgtLoberData() {
+		var x = document.getElementById("navn").value;
+		let udata = getUserData(x);
+		console.log(udata);
+	};
+
+	async function getUserData(user) {
+		let url = "{{url_for('tilmelding.get_tilm_deltager', user_id='idher')}}".replace("idher", user);
+		try {
+			let deltdata = await fetch(url);
+			let userdata = await deltdata.json();
+			document.getElementById('email').value = await userdata[0].email;
+			document.getElementById('briknummer').value = await userdata[0].briknummer;
+			document.getElementById('klub').selectedIndex = await userdata[0].klubid - 1;
+			document.getElementById('telefonnummer').value = await userdata[0].telefonnummer;
+			document.getElementById('deltagerhidden').value = await userdata[0].tilmeldtId;
+			document.getElementById('lobbane').disabled = false
+			document.getElementById('lobbane').value = await userdata[0].lobbane;
+			document.getElementById('lobbane_id').value = await userdata[0].lobbane_id;
+			
+			//return await deltdata.json();
+			console.log("Stig 2");
+			console.log(userdata[0].lobbane);
+		} catch (error) {
+			console.log("Stig 1");
+			console.log(error);
+		}
+	};
+
+</script>

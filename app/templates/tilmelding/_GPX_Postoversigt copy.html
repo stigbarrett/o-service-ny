@@ -1,0 +1,46 @@
+
+<link rel="stylesheet" href="https://unpkg.com/bootstrap-table@1.21.1/dist/bootstrap-table.min.css">
+
+<div class="masonry-grid-item col pb-1 pb-lg-5">
+	<article class="card">
+	  	<div class="card-body">
+            <h3 class="h4">{{ navn }} - {{ bane }} - Dine stræk. {{ konkurrencenavn }}</h3>
+            <div class="card-body">
+                <!--<table id="table" name="table" class="display" data-show-columns="true" data-toggle="table" style="width:100%">-->
+                    <table data-toggle="table" data-search="true" data-show-columns="true">
+                    <thead>
+                        <tr> 
+                            <th data-field="Post" rowspan="2" data-valign="middle">Post</th>
+                            <th data-field="Status">Status</th>
+                            <th>Fra post</th>
+                            <th>Til post</th>
+                            <th>Stræktid</th>
+                            <th>Samlet hertil</th>
+                            <th>Afstand</th>
+                            <th>Godkendt</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for dict_item in resultat %}
+                        <tr>
+                            {% for value in dict_item.values() %}
+                            {% if value == 1 %}
+                            <td contenteditable='false' style="background-color:powderblue;">"OK"</td>
+                            {% elif value == 0 %}
+                            <td contenteditable="true" style="background-color:powderblue;">"ej OK"</td>
+                            {% else %}
+                            <td>{{value}}</td>
+                            {% endif %}
+                            {% endfor %}
+                            
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table> 
+            </div>
+        </div>
+	</article>
+</div>
+<script src="https://unpkg.com/bootstrap-table@1.21.1/dist/bootstrap-table.min.js"></script>
+<!--<script src="https://cdn.jsdelivr.net/npm/jquery/dist/jquery.min.js"></script>
+<script src="https://code.jquery.com/ui/1.13.1/jquery-ui.js"></script>-->

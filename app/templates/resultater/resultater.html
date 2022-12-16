@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+{% extends "base.html" %}
+
+{% block app_content %}
+<link rel="stylesheet" href="{{ url_for('static', filename='tab.css') }}">
+<link rel="stylesheet" href="{{ url_for('static', filename='css/autoComplete.01.css') }}">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tarekraafat/autocomplete.js@10.2.7/dist/css/autoComplete.02.min.css">
+<!--<script src="https://code.jquery.com/jquery-3.6.1.js" integrity="sha256-3zlB5s2uwoUzrXK3BT7AX3FyvojsraNFxCc2vC/7pNI=" crossorigin="anonymous"></script>-->
+<script src="https://cdn.jsdelivr.net/npm/@tarekraafat/autocomplete.js@10.2.7/dist/autoComplete.min.js"></script>
+
+<!--<link rel="stylesheet" href="https://unpkg.com/ag-grid-community/dist/styles/ag-grid.css">
+<link rel="stylesheet" href="https://unpkg.com/ag-grid-community/dist/styles/ag-theme-material.css">-->
+<!--<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/bs5/dt-1.11.4/datatables.min.css"/>-->
+<!--<link href="https://cdn.jsdelivr.net/npm/simple-datatables@latest/dist/style.css" rel="stylesheet" type="text/css">-->
+<!-- Page content -->
+<!-- section giver luft under menu -->
+
+
+<h1 class="text-nowrap mb-md-4 pe-md-5"></h1>
+
+<section class="container mt-2 mt-sm-3 py-md-3 py-lg-5">
+    <div class="row">
+        <div class="col-xl-12 col-lg-12">
+            
+                <div class="pe-xl-5">
+                    
+                        {% include 'resultater/_vis_resultater.html' %}
+                    
+                    
+                </div>
+
+            </div>
+        </div>
+    </section>
+    {% endblock app_content %}
+    
+    
+    {% block scripts %}
+        {{ super() }}
+        
+        <!--<script src="https://cdn.jsdelivr.net/npm/simple-datatables@latest" type="text/javascript"></script>
+        <script src="https://code.jquery.com/jquery-3.6.1.js" integrity="sha256-3zlB5s2uwoUzrXK3BT7AX3FyvojsraNFxCc2vC/7pNI=" crossorigin="anonymous"></script>-->
+        
+        
+        <!--<script type="text/javascript" src="https://cdn.datatables.net/v/bs5/dt-1.11.4/datatables.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/@tarekraafat/autocomplete.js@10.2.6/dist/autoComplete.min.js"></script>-->
+        
+        <!--<script src="{{ url_for('static', filename='js/forms-autocomplete.js') }}"></script>-->
+        <!--<script src="https://cdn.jsdelivr.net/gh/xcash/bootstrap-autocomplete@v2.3.7/dist/latest/bootstrap-autocomplete.min.js"></script>-->
+        <!--<script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.js"></script>
+        
+        <script src="https://code.jquery.com/ui/1.13.1/jquery-ui.js"></script>-->
+        <!--<script src="https://code.jquery.com/jquery-3.6.1.js" integrity="sha256-3zlB5s2uwoUzrXK3BT7AX3FyvojsraNFxCc2vC/7pNI=" crossorigin="anonymous"></script>-->
+	    <!--<script src="{{ url_for('static', filename='js/XMLresultater.js') }}"></script>-->
+        <!--<script src="https://unpkg.com/@ag-grid-enterprise/all-modules@27.2.1/dist/ag-grid-enterprise.min.js"></script>-->
+	
+        <script src="{{ url_for('static', filename='assets/vendor/shufflejs/dist/shuffle.min.js') }}"></script>
+        <script src="{{ url_for('static', filename='assets/vendor/imagesloaded/imagesloaded.pkgd.min.js') }}"></script>
+        <script src="{{ url_for('static', filename='assets/vendor/lightgallery/lightgallery.min.js') }}"></script>
+        <script src="{{ url_for('static', filename='assets/vendor/lightgallery/plugins/video/lg-video.min.js') }}"></script>
+
+        
+    
+    {% endblock scripts %}
+        
+        

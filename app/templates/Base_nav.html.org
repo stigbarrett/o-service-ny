@@ -1,0 +1,119 @@
+{% extends "base.html" %}
+{% from 'bootstrap5/nav.html' import render_nav_item %}
+{% from 'bootstrap5/form.html' import render_form %}
+
+
+<div id="layoutDefault">
+    <div id="layoutDefault_content">
+        <main>    
+            {% block navbar %}
+            
+            <nav class="navbar navbar-expand-lg bg-info navbar-light">
+                <div class="container">
+                    <a class="navbar-brand text-dark" href="{{url_for('main.index') }}">
+                        <img class="img-fluid" src="{{ url_for('static', filename='assets/img/logo.png') }}" width="200%" height="200%" alt="">
+                    </a>
+                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><i data-feather="menu"></i></button>
+                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                        <ul class="navbar-nav ms-auto me-lg-5">
+                            <li class="nav-item"><a class="nav-link" href="{{ url_for('main.index') }}">Forside </a></li>
+                            <li class="nav-item"><a class="nav-link" href="{{ url_for('main.explore') }}">Udforsk </a></li>
+                            <!--<a class="nav-link">{{ render_nav_item('main.index', 'Ny orientering') }}></a>
+                            <li class="nav-item"><a class="nav-link" {{render_nav_item('main.explore', 'Explore') }}></a></li>-->
+                            <li class="nav-item dropdown no-caret">
+                                <a class="nav-link dropdown-toggle" id="navbarDropdownDocs" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Administration<i class="fas fa-chevron-right dropdown-arrow"></i></a>
+                                <div class="dropdown-menu dropdown-menu-right animated--fade-in-up" aria-labelledby="navbarDropdownDocs">
+                                    <a class="dropdown-item py-3" href="#">
+                                        <div>
+                                            Convet KMZ for MapRun6
+                                        </div>
+                                    </a>
+                                    
+                                </div>
+                            </li>
+                            <li class="nav-item dropdown no-caret">
+                                <a class="nav-link dropdown-toggle" id="navbarDropdownDocs" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Resultater<i class="fas fa-chevron-right dropdown-arrow"></i></a>
+                                <div class="dropdown-menu dropdown-menu-right animated--fade-in-up" aria-labelledby="navbarDropdownDocs">
+                                    <a class="dropdown-item py-3" href="#"
+                                        ><div class="icon-stack bg-primary-soft text-primary mr-4"><i class="fas fa-running"></i></div>
+                                        <div>
+                                            <div class="small text-gray-500">Resultater</div>
+                                            Resultater og stræktider Onsdagstræningsløb m.v. 2022
+                                        </div>
+                                    </a>
+                                    <a class="dropdown-item py-3" href="#"
+                                        ><div class="icon-stack bg-primary-soft text-primary mr-4"><i class="fas fa-columns"></i></div>
+                                        <div>
+                                            <div class="small text-gray-500">Point</div>
+                                            Samlet point pr. bane for året - 2022
+                                        </div>
+                                    </a>
+                                    <div class="dropdown-divider m-0"></div>
+                                    <a class="dropdown-item py-3" href="#"
+                                        ><div class="icon-stack bg-primary-soft text-primary mr-4"><i class="fas fa-running"></i></div>
+                                        <div>
+                                            <div class="small text-gray-500">Resultater</div>
+                                            Resultater og stræktider 2019
+                                        </div>
+                                    </a>
+                                    <a class="dropdown-item py-3" href="#"
+                                        ><div class="icon-stack bg-primary-soft text-primary mr-4"><i class="fas fa-columns"></i></div>
+                                        <div>
+                                            <div class="small text-gray-500">Point</div>
+                                            Samlet point pr. bane for året 2019
+                                        </div>
+                                    </a>
+                                    <div class="dropdown-divider m-0"></div>
+                                    <a class="dropdown-item py-3" href="#"
+                                        ><div class="icon-stack bg-primary-soft text-primary mr-4"><i class="fas fa-smile"></i></div>
+                                        <div>
+                                            <div class="small text-gray-500">Løber Statistik</div>
+                                            Hvilke og hvor mange løb
+                                        </div>
+                                    </a>
+                                </div>
+                            </li>
+                            <li class="nav-item dropdown no-caret">
+                                <a class="nav-link dropdown-toggle" id="navbarDropdownDocs" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Statistik<i class="fas fa-chevron-right dropdown-arrow"></i></a>
+                                <div class="dropdown-menu dropdown-menu-right animated--fade-in-up" aria-labelledby="navbarDropdownDocs">
+                                    <a class="dropdown-item py-3" href="#">
+                                        <div>
+                                            2022
+                                        </div>
+                                    </a>
+                                    <a class="dropdown-item py-3" href="#">
+                                        <div>
+                                            2019
+                                        </div>
+                                    </a>
+
+                                </div>
+                            </li>
+                            <li class="nav-item dropdown no-caret">
+                                <a class="nav-link dropdown-toggle" id="navbarDropdownDocs" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Blanketter<i class="fas fa-chevron-right dropdown-arrow"></i></a>
+                                <div class="dropdown-menu dropdown-menu-right animated--fade-in-up" aria-labelledby="navbarDropdownDocs">
+                                    <a class="dropdown-item py-3" href="#">
+                                        <div>
+                                            Upload resultater
+                                        </div>
+                                    </a>
+                                    
+                                </div>
+                            </li>
+                        </ul>
+                        <!--<a class="btn-teal btn rounded-pill px-4 ml-lg-4" href="https://shop.startbootstrap.com/sb-ui-kit-pro">Buy Now<i class="fas fa-arrow-right ml-1"></i></a>-->
+                        <ul class="navbar-nav ms-auto me-lg-5">
+                            {% if current_user.is_anonymous %}
+                                <li class="nav-item"><a class="nav-link" href="{{ url_for('auth.login') }}">{{ _('Login') }}</a></li>
+                            {% else %}
+                                <li class="nav-item"><a class="nav-link" href="{{ url_for('main.user', username=current_user.username) }}">{{ _('Profile') }}</a></li>
+                                <li class="nav-item"><a class="nav-link" href="{{ url_for('auth.logout') }}">{{ _('Logout') }}</a></li>
+                            {% endif %}
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+        </main>
+    </div>
+    
+{% endblock %}

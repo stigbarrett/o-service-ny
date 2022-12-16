@@ -1,0 +1,122 @@
+<!-- Item -->
+<div class="masonry-grid-item col pb-2 pb-lg-3">
+	<article class="card">
+	    <div class="card-body">
+            <h3 class="card-title pb-3 mb-4">Ret løbs data</h3>
+            
+            <!--</form>-->
+            <form class="row g-4 needs-validation" validate  method="post" enctype="multipart/form-data">
+                <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+                
+                    <div class="col-sm-6">
+                    <label for="loeb" class="form-label fs-base">Vælg løb:</label>
+                        <select class="form-select form-select-lg" data-customclass="form-select" id="loeb" name="loeb" required data-validate-field="loeb">
+                            {% for item in loeb_alle %}
+                                <option value="{{ item['id'] }}">{{ item['navn'] }}</option>
+                            {% endfor %}
+                        </select>
+                        <div class="invalid-feedback">Vælg et løb fra listen!</div>
+                    </div>
+                
+                <!--<div class="col-sm-6">
+                    <label for="skov" class="form-label fs-base">Skov/Konkurrencens navn</label>
+                    <input class="form-control form-control-lg" type="text" name="" id="skov" value="{{ skov }}" {% if skov %}readonly{% endif %} required data-validate-field="skov">
+                    <div class="invalid-feedback">Indtast konkurrencens navn, typisk skovens navn!</div>
+                </div>-->
+                <div class="col-sm-6">
+                    <label for="klub" class="form-label fs-base">Vælg klub</label>
+                        <select class="form-select form-select-lg" data-customclass="form-select" id="klub" name="klub" required data-validate-field="klub">
+                            {% for key1, value1 in klubber.items() %}
+                                {%if klub %}
+                                    {% if klub in key1 %}
+                                        <option value="{{ key1 }}" selected>{{ value1 }}</option>
+                                    {% else %}
+                                        <option value= "{{ key1 }}">{{ value1 }}</option>
+                                    {% endif %}
+                                {% else %}
+                                    <option value= "{{ key1 }}">{{ value1 }}</option>
+                                {%endif %}
+                            {% endfor %}
+                        </select>
+                    <div class="invalid-feedback">Vælg en klub fra listen!</div>
+                </div>
+                <div class="col-sm-6">
+                    <label for="dato" class="form-label fs-base">Dato</label>
+                    <input class="form-control form-control-lg" type="text" name="dato" id="dato" value="{{ dato }}" required data-validate-field="dato">
+                    <div class="invalid-feedback">Indtast konkurrencens dato!</div>
+                </div>
+                <div class="col-sm-6">
+                    <label for="type" class="form-label fs-base">Løbs type</label>
+                    <input class="form-control form-control-lg" type="text" id="type" placeholder="type" name="type" value="{{ Type }}" required data-validate-field="type">
+                    <div class="invalid-feedback">Indtast konkurrence type!</div>
+                </div>
+                <div class="col-sm-6">
+                    <label class="form-label fs-base">Ansvarlig</label>
+                    <input class="form-control" type="text" id="ansvarlig" placeholder="Ansvarlig" name="ansvarlig" value="{{ Ansvarlig }}" {% if Andet %}readonly{% endif %}>
+                </div>
+                <div class="col-sm-6">
+                    <label class="form-label fs-base">Andet</label>
+                    <input class="form-control" type="text" id="andet" placeholder="Andet" name="andet" value="{{ Andet }}" {% if Andet %}readonly{% endif %}>
+                </div>
+                <div class="col-sm-3">
+                    <label class="form-label fs-base">Emit enheder</label>
+                    <select class="form-select form-select-lg" data-customclass="form-select" id="emitenheder" name="emitenheder">
+                        {% if emit == 1 %}
+                        <option value="Ja" selected>Ja</option>
+                        <option value="Nej">Nej</option>
+                        {% else %}
+                        <option value="Ja">Ja</option>
+                        <option value="Nej" selected>Nej</option>
+                        {% endif %}
+                    </select>
+                </div>
+                <div class="col-sm-3">
+                    <label for="klarmeldt" class="form-label fs-base">Klarmeldt</label>
+                    <select class="form-select form-select-lg" data-customclass="form-select" id="klarmeldt" name="klarmeldt">
+                        {% if klarmeldt == 1 %}
+                        <option value="Ja" selected>Ja</option>
+                        <option value="Nej">Nej</option>
+                        {% else %}
+                        <option value="Ja">Ja</option>
+                        <option value="Nej" selected>Nej</option>
+                        {% endif %}
+                    </select>
+                </div>
+                <div class="col-sm-3">
+                    <label for="kort" class="form-label fs-base">Kort til selvprint</label>
+                    <select class="form-select form-select-lg" data-customclass="form-select" id="kort" name="kort">
+                        {% if kort_print == 1 %}
+                        <option value="Ja" selected>Ja</option>
+                        <option value="Nej">Nej</option>
+                        {% else %}
+                        <option value="Ja">Ja</option>
+                        <option value="Nej" selected>Nej</option>
+                        {% endif %}
+                    </select>
+                </div>
+                <div class="col-sm-6">
+                    <label for="file" class="form-label fs-base">Tilføj KMZ fil.</label>
+                    <input class="form-control form-control-lg" type="file" name="file" accept=".kmz">
+                    <!--<div class="invalid-feedback">Vælg løbets KMZ fil!</div>-->
+                </div>
+            
+                <div class="col-sm-12 text-center">
+                    <button class="btn btn-primary" name="Vælg" id="submit_1" type="submit" >Indsend rettede data</button>
+                </div>
+                
+            </form>
+		</div>
+    </article>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/vanillajs-datepicker@1.2.0/dist/js/datepicker.min.js"></script>
+    
+<script src="{{ url_for('static', filename='datepicker/locales/da.js') }}"></script>
+<script type="text/javascript">
+    const elem = document.getElementById('dato');
+    const datepicker = new Datepicker(elem, {
+        buttonClass: "btn",
+        //format: "yyyy-mm-dd",
+        format: "dd-mm-yyyy",
+        // ...options
+    }); 
+</script>

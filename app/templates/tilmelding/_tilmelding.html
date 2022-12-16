@@ -1,0 +1,88 @@
+<!-- Item -->
+<div class="masonry-grid-item col pb-2 pb-lg-3">
+	<article class="card">
+	  <div class="card-body pb-1 px-10">
+		<p class="mb-4">
+			<form class="row g-4 needs-validation" method="post" novalidate>
+				
+				{% if current_user.is_anonymous == True %}
+					<input type="hidden" name="deltagerhidden" id="deltagerhidden" value="{{ tilmelderId }}"/>
+					
+				{% else %}
+					<input type="hidden" name="deltagerhidden" id="deltagerhidden" value="{{ tilmelderId }}"/>
+				{% endif %}
+				
+				<input type="hidden" name="csrf_token" value="{{ csrf_token() }}"> <!-- OK -->
+				<input type="hidden" name="loebhidden" id="loebhidden" value="{{ valgtlob }}"/> <!-- OK-->
+				
+				<!-- fjernet Navneliste -->
+				
+				<!-- fjernet if deltagere == None -->
+					
+				<input type="hidden" name="loberhidden" id="loberhidden" value="{{ tilmeldtId }}"/> <!-- OK - men bruges til hvad -->
+				<input type="hidden" name="tilmeldthidden" id="tilmeldthidden" value="{{ tilmeldt_status }}"/> <!-- Bruges til hvad ? -->
+				<input type="hidden" name="status_profileid" id="status_profileid" value="{{ profil_status }}"/> <!-- OK -->
+				<input type="hidden" name="profileid" id="profileid" value=""/> <!-- Bruges til hvad ? -->
+				<div class="col-sm-8">
+					<label for="autoComplete1" class="form-label fs-base">(Fornavn og Efternavn)</label>
+					<input class="form-control form-control-lg" type="search" name="autoComplete1" autocomplete=off id="autoComplete1" value="{{ navn }}" data-validate-field="autoComplete1">
+					<!--<input class="autoComplete_wrapper" type="search" name="autoComplete1" autocomplete=off id="autoComplete1" value="{{ navn }}" data-validate-field="autoComplete1">-->
+					
+					<div class="invalid-feedback">Indtast dit fulde navn!</div>    
+				</div>
+				
+				<div class="col-sm-4">
+					<label for="klub" class="form-label fs-base">Vælg klub</label>
+					<select class="form-select form-select-lg" data-customclass="form-select" id="klub" name="klub">
+						{% for key1, value1 in klubber.items() %}
+							{% if klub in key1 %}
+							<option value="{{ key1 }}" selected>{{ value1 }}</option>
+							{% else %}
+							<option value="{{ key1 }}">{{ value1 }}</option>
+							{% endif %}
+						{% endfor %}
+					</select>
+					<div class="invalid-feedback">Vælg en klub fra listen!</div>
+				</div>
+				<div class="col-sm-4">
+					<label for="email" class="form-label fs-base">Email</label>
+					<input class="form-control form-control-lg" type="text" id="email" name="email" value="{{ email }}" placeholder="Email">
+					<div class="invalid-feedback">Indtast en valid email adresse!</div>
+				</div>
+				<div class="col-sm-4">
+					<label for="briknummer" class="form-label fs-base">Briknummer</label>
+					<input type="text" id="briknummer" name="briknummer" value="{{ brik }}" class="form-control form-control-lg" placeholder="briknummer"/>
+				</div>
+				<div class="col-sm-4">
+					<label for="telefonnummer" class="form-label fs-base">Telefonnummer</label>
+					<input type="text" id="telefonnummer" name="telefonnummer" value="{{ tlfnummer }}" class="form-control form-control-lg" placeholder="Telefonnummer"/>
+				</div>
+				<div class="col-sm-6">
+					<label for="bane" class="form-label fs-base">Valgt Bane</label>
+					<input class="form-control form-control-lg" type="text" id="bane" name="bane" value="" placeholder="Bane" readonly>
+				</div>
+				<!--<div class="col-sm-6">
+					<label for="flere" class="form-label fs-base">Tilmeld flere?</label>
+					<input class="form-control form-control-lg" type="text" id="flere" name="flere" value="" placeholder="Bane" readonly>
+				</div>-->
+				<div class="col-sm-6">
+				<label for="flere" class="form-label fs-base">Tilmeld flere?</label>
+					<select class="form-select form-select-lg" data-customclass="form-select" id="flere" name="flere">
+							<option value="0" selected>Nej</option>
+							<option value="1">Ja</option>
+					</select>
+					<div class="invalid-feedback">Foretag et valg!</div>
+				</div>
+				<div class="col-sm-12 text-center">
+					<a class="btn btn-secondary" href="{{ url_for('tilmelding.alleTilmeldte') }}" role="button">Se alle tilmeldte</a>
+					
+					<button class="btn btn-info" name="submit_2" id="submit_2" value="kort" type="submit">Download bestilte kort</button>
+					
+					<button class="btn btn-primary" name="submit_1" id="submit_1" value="tilmeld" onclick=clear_data(this) type="button" {% if erKort %}disabled{% endif %}>Tilmeld</button>
+				</div>
+				
+			</form>
+		</p>
+	  </div>
+	</article>
+</div>

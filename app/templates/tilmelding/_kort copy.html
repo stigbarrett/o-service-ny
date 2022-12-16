@@ -1,0 +1,37 @@
+{% if erKort %}
+<div class="col pb-1 pb-lg-3 mb-6">
+	<div class="col-md-12 mb-2">
+		<div class="card"></div>
+			<div class="card border-light shadow-lg py-3 p-sm-4 p-md-5">
+				<h3 class="card-title pb-3 mb-4">Vælg den bane du vil se</h3>
+				<ul class="nav nav-tabs" id="myTab" data-bs-tabs="tabs" role="tablist">
+				{% for stripkort in kortbane %}
+					<li class="nav-item"><a class="nav-link {% if loop.index == 1 %}active{% endif %}" data-bs-toggle="tab" href="#tab{{ loop.index }}" role="tab" aria-controls="tab{{ loop.index }}" aria-selected="false">Bane {{ loop.index }}</a></li>
+				{% endfor %}
+				</ul>
+				<div class="tab-content" id="myTabContent"> 
+					{% for dict_item in kort %}
+						<div class="tab-pane fade {% if loop.index == 1 %}show active{% endif %}" id="tab{{ loop.index }}" role="tabpanel">
+								<img src="{{ url_for('static', filename=dict_item['filen']) }}" class="card-img-top" height="100%" alt="...">
+								
+							<div align="center">
+								<h5 class="card-title">{{ dict_item['banenavn'] }}</h5>
+								<p class="card-text">{{ dict_item['beskrivelse'] }}</p>
+								<a href="#" id="14" class="btn btn-primary" onclick="reply_click(this)" data-product-name="{{ dict_item['banenavn'] }}">Vælg {{ dict_item['banenavn'] }}</a>
+							</div>
+						</div>
+					{% endfor %}
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+{% else %}
+<div class="col pb-1 pb-lg-3 mb-6">
+	<div class="col-md-12 mb-2">
+		<div class="card card-portfolio">
+			<h3 class="card-title pb-3 mb-4">Der er ingen kort til download til dette løb. Kort udleveres ved start</h3>
+		</div>
+	</div>
+</div>
+{% endif %}

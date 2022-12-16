@@ -1,0 +1,70 @@
+{% extends "base.html" %} {% block title %}Tilmeld{% endblock %}
+{% from 'bootstrap5/nav.html' import render_breadcrumb_item %}
+{% from 'bootstrap5/form.html' import render_form, render_field %}
+
+
+
+{% block content %}
+{% block app_content %}
+
+<link rel="stylesheet" href="{{ url_for('static', filename='tab.css') }}">
+
+<section class="bg-side-1 py-10">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-7 col-md-12">
+                <form class="card" id="form2" method="POST" enctype="multipart/form-data">
+                    {{ form.hidden_tag() }}
+                    <div class="card-body">
+                        <h4 class="card-header">KMZ fil fra Condes, til resultatberegning</h4>
+                        <h5 class="card-title"></h5>
+                        <div class="row gy-5">
+                            <h3>Vælg løb:</h3>
+                            <select data-customclass="form-select" id="loeb" name="loeb">
+                                {% for key, value in loeb_alle.items() %}
+                                    <option value={{ key }}>{{ value }}</option>
+                                {% endfor %}
+                            </select>
+                            
+                            <H3><label for="kmz-upload" class="form-label">Tilføj KMZ fil</label></H3>
+                            <input type="file" name="kmz_file" accept=".kmz">
+                            <div align="center">
+                                <button class="btn btn-primary" id="submit" type="submit" >Tilføj KMZ fil</button>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+<section class="bg-side-2 py-2">
+                    
+	<div class="container"> 
+		<nav style="--bs-breadcrumb-divider: ' ';" aria-label="breadcrumb">
+			
+			<ol class="breadcrumb">
+			   
+				{% block breadcrumb %}
+				
+					{{ render_breadcrumb_item('administration.opretlob', 'Opret nyt løb') }}
+					{{ render_breadcrumb_item('administration.tilfoj_kort', 'Tilføj kort til løb') }}
+					{{ render_breadcrumb_item('administration.tilfoj_KMZfil', 'Tilføj KMZ til løb') }}
+				  
+				{% endblock breadcrumb %}
+				
+			</ol>
+			
+		</nav>
+	</div>
+	
+</section>
+{% endblock app_content%}
+
+{% endblock content %}
+
+{% block scripts %}
+
+
+
+{% endblock scripts%}

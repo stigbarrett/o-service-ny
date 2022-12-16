@@ -1,0 +1,165 @@
+<link rel="stylesheet" href="{{ url_for('static', filename='tab.css') }}">
+<!-- Item -->
+<div class="masonry-grid-item col pb-2 pb-lg-3">
+	<article class="card">
+	    <div class="card-body">
+            {% if kort %}
+                <h3 class="card-title pb-3 mb-4">Der er uploadet kort.</h3>
+                <p class="fs-sm pb-lg-3 mb-4">Hvis du oploader kort igen overskrives det nuværende kort.</p>
+            {% else %}
+            <h3 class="card-title pb-3 mb-4">Kort i tilknytning til løb</h3>
+            {% endif %}
+                <!--</form>-->
+				<form class="row g-4 needs-validation" validate  method="post" enctype="multipart/form-data">
+					<input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+                    <div class="col-sm-6">
+                        <label for="loeb" class="form-label fs-base">Vælg løb:</label>
+                            <select class="form-select form-select-lg" data-customclass="form-select" id="loeb" name="loeb" required data-validate-field="loeb">
+                                {% for item in loeb_alle %}
+                                    <option value="{{ item['id'] }}">{{ item['navn'] }}</option>
+                                {% endfor %}
+                            </select>
+                        <div class="invalid-feedback">Vælg et løb fra listen!</div>
+                    </div>
+                    <div class="col-sm-6">
+                        <label for="bane" class="form-label fs-base">Bane Navn:</label>
+                        <select class="form-select form-select-lg" data-customclass="form-select" id="bane" name="bane" required data-validate-field="bane">
+                            {% for bane in baner_alle %}
+                                <option value="{{ bane['id'] }}">{{ bane['navn'] }}</option>
+                            {% endfor %}
+                        </select>
+                        <!--<input class="form-control form-control-lg" type="text" name="bane" id="bane" value="{{ bane }}" required data-validate-field="bane">-->
+                        <div class="invalid-feedback">Vælg bane!</div>
+                    </div>
+                    <div class="col-sm-6">
+                        <label for="beskrivelse" class="form-label fs-base">Fil/Bane Beskrivelse</label>
+                        <input class="form-control form-control-lg" type="text" id="beskrivelse" placeholder="beskrivelse" name="beskrivelse" value="{{ beskrivelse }}" {% if beskrivelse %}readonly{% endif %} required data-validate-field="beskrivelse">
+                        <div class="invalid-feedback">Indtast bane beskrivelse!</div>
+                    </div>
+                    {% if kontrol == 1 %}
+                    <div class="col-sm-6">
+                        <label for="file" class="form-label fs-base">Løbskort i en PDF fil.</label>
+                        <input class="form-control form-control-lg" type="file" id="file" name="file" accept=".pdf">
+                    </div>
+                        {% if kort %}
+                        <div class="text-center">
+                            <button class="btn btn-warning bg-gradient" name="Vælg" id="submit_1" type="submit" >Upload kort igen</button>
+                            <button class="btn btn-primary bg-gradient" name="Vælg" id="submit_1" type="submit" hidden>Tilføj kort</button>
+                        </div>
+                        {% else %}
+                            <div class="text-center">
+                                <button class="btn btn-primary bg-gradient" name="Vælg" id="submit_1" type="submit" >Tilføj kort</button>
+                            </div>
+                        {% endif %}
+                    {% else %}
+                        <div class="text-center">
+                            <button class="btn btn-primary bg-gradient" name="Vælg" id="submit_1" type="submit" >Tilføj bane</button>
+                        </div>
+                    {% endif %}
+					
+				</form>
+			
+		</div>
+    </article>
+</div>
+<script
+    src="https://code.jquery.com/jquery-3.6.1.js"
+    integrity="sha256-3zlB5s2uwoUzrXK3BT7AX3FyvojsraNFxCc2vC/7pNI="
+    crossorigin="anonymous">
+</script>
+<script charset="utf-8" type="text/javascript">
+
+    $(function() {
+    
+        // jQuery selection for the 2 select boxes
+        var dropdown = {
+            loeb: $('#loeb'),
+            baner: $('#bane')
+        };
+    
+        // call to update on load
+        updateCounties();
+    
+        // function to call XHR and update county dropdown
+        function updateCounties() {
+            var send = {
+                loeb: dropdown.loeb.val()
+            };
+            dropdown.baner.attr('disabled', 'disabled');
+            dropdown.baner.empty();
+            $.getJSON("{{ url_for('administration._get_baner') }}", send, function(data) {
+                data.forEach(function(item, index) {
+                    console.log(item);
+                    dropdown.baner.append(
+                            $('<option>', {
+                                value: item[0],
+                                text: item[1]
+                            })
+                    );
+
+                    if (index = 0) {
+                        console.log(item);
+                        updateBaner(item[0]);
+                        }
+                })
+                dropdown.baner.removeAttr('disabled');
+            });
+        };
+
+        function updateBaner(item) {
+            console.log(item);
+            var send = item;
+            $.getJSON("{{ url_for('administration._get_beskeder') }}", send, function(data) {
+                            $('#beskrivelse').val(data);
+                        });
+        };
+    
+        // event listener to state dropdown change
+        dropdown.loeb.on('change', function() {
+            updateCounties();
+        });
+    
+    });
+    
+</script>
+
+<script charset="utf-8" type="text/javascript">
+        $(function() {
+    
+            // jQuery selection for the 2 select boxes
+            var dropdown = {
+                baner: $('#bane')
+            };
+
+            // call to update on load
+            //updateBeskrivelse();
+
+            // function to call XHR and update county dropdown
+            function updateBeskrivelse() {
+                var send = {
+                    bane: dropdown.baner.val()
+                };
+                //dropdown.baner.attr('disabled', 'disabled');
+                //dropdown.baner.empty();
+                $.getJSON("{{ url_for('administration._get_beskeder') }}", send, function(data) {
+                    $('#beskrivelse').val(data);
+                });
+            }
+
+            function wait(ms) {
+                var defer = $.Deferred();
+                setTimeout(function() { defer.resolve(); }, ms);
+                return defer;
+            };
+            // event listener to state dropdown change
+            dropdown.baner.on('change', function() {
+
+                updateBeskrivelse();
+            });
+
+            wait(100).then(updateBeskrivelse);
+
+        });
+
+
+</script>

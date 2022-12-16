@@ -1,0 +1,27 @@
+<!-- Item -->
+<div class="masonry-grid-item col pb-1 pb-lg-5">
+	<article class="card">
+	  	<div class="card-body">
+			
+			<h3 class="h4">Dine tilmeldte {{ lobtekst }}</h3>
+			
+				{% if deltagere %}
+				<table id="data" class="table table-striped">
+					<thead>
+						<th>Navn</th>
+						<th>Klub</th>
+						<th>Bane</th>
+						<th>Brik</th>
+					</thead>
+					<tbody>
+					
+					</tbody>
+				</table>
+				
+				{% else %}
+				<h3 class="h4">Du har endnu ingen tilmeldte til det valgte løb</h3>
+				{% endif %}
+				
+		</div>
+	</article>
+</div>

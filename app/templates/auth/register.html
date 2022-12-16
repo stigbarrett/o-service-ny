@@ -1,0 +1,17 @@
+{% extends 'Base_nav.html' %}
+{% from 'bootstrap5/form.html' import render_form %}
+
+{% block breadcrumb %}{%endblock breadcrumb %}
+{% block app_content %}
+<section class="bg-side-1 py-10">
+    <div class="container">
+        <h1>{{ _('Registrer') }}</h1>
+        <div class="row">
+            <div class="col-md-4">
+                {{ render_form(form) }}
+            </div>
+        </div>
+    </div>
+</section>
+
+{% endblock %}

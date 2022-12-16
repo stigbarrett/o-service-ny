@@ -1,0 +1,29 @@
+<!-- Item -->
+<div class="col pb-1 pb-lg-3 mb-6">
+	<div class="col-md-12 mb-2">
+		<div class="card">
+			<div class="card border-light shadow-lg py-3 p-sm-4 p-md-5">
+				<h3 class="card-title pb-3 mb-4">Dine tilmeldte {{ lobtekst }}</h3>
+				<div class="col-sm-12">
+					{% if deltagere %}
+					<div class="table-responsive">
+						<table id="data" class="table table-striped">
+							<thead>
+								<th>Navn</th>
+								<th>Klub</th>
+								<th>Bane</th>
+								<th>Brik</th>
+							</thead>
+							<tbody>
+							
+							</tbody>
+						</table>
+					</div>
+					{% else %}
+					<h3 class="h4 mb-0">Du har endnu ingen tilmeldte til det valgte løb</h3>
+					{% endif %}
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

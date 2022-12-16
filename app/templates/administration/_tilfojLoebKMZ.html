@@ -1,0 +1,44 @@
+<!-- Item -->
+<div class="col pb-1 pb-lg-3 mb-6">
+	<div class="col-md-12 mb-2">
+		<div class="card">
+			<div class="card border-light shadow-lg py-3 p-sm-4 p-md-5">
+                <h3 class="card-title pb-3 mb-4">Kort i tilknytning til løb</h3>
+                
+                <!--</form>-->
+				<form class="row g-4 needs-validation" validate  method="post" enctype="multipart/form-data">
+                    
+					<input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+                    <input type="hidden" name="funktion" value="{{ funktion }}">
+                    <div class="col-sm-6">
+                        <label for="skov" class="form-label fs-base">Indtast konkurrencens navn, typisk skovens navn!:</label>
+                        <input class="form-control form-control-lg" type="text" name="skov" id="skov" value="{{ skov }}" required data-validate-field="skov">
+                        <div class="invalid-feedback">Indtast løbets navn!</div>
+                    </div>
+                    <div class="col-sm-6">
+                        <label for="dato" class="form-label fs-base">Dato</label>
+                        <input class="form-control form-control-lg" type="text" name="dato" id="dato" value="{{ idag }}" required data-validate-field="dato">
+                        <div class="invalid-feedback">Indtast konkurrencens dato!</div>
+                    </div>
+                    <div class="col-sm-6">
+                        <label for="klub" class="form-label fs-base">Vælg klub</label>
+                            <select class="form-select form-select-lg" data-customclass="form-select" id="klub" name="klub" required data-validate-field="klub">
+                                {% for key1, value1 in klubber.items() %}
+                                    <option value= {{ key1 }}>{{ value1 }}</option>
+                                {% endfor %}
+                            </select>
+                        <div class="invalid-feedback">Vælg en klub fra listen!</div>
+                    </div>
+                    <div>
+                        <label for="file" class="form-label fs-base">Tilføj KMZ fil.</label>
+                        <input class="form-control form-control-lg" type="file" name="file" accept=".kmz" required data-validate-field="file">
+                        <div class="invalid-feedback">Vælg løbets KMZ fil!</div>
+                    </div>
+                    <div align="center">
+                        <button class="btn btn-primary" name="Vælg" id="submit" type="submit" >Opret løbet</button>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+</div>

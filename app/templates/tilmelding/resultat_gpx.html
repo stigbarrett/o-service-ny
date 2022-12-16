@@ -1,0 +1,85 @@
+{% extends "base.html" %} {% block title %}Ret Tilmeld{% endblock %}
+{% from 'bootstrap5/nav.html' import render_breadcrumb_item %}
+
+
+
+{% block content %}
+{% block app_content%}
+    <link rel="stylesheet" href="{{ url_for('static', filename='tab.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/autoComplete.01.css') }}">
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/bs5/dt-1.11.4/datatables.min.css"/>
+    <link href="https://cdn.jsdelivr.net/npm/simple-datatables@latest/dist/style.css" rel="stylesheet" type="text/css">
+    <link
+      href="https://unpkg.com/gridjs/dist/theme/mermaid.min.css"
+      rel="stylesheet"
+    />
+
+    <section class="bg-light pt-10">
+        <div class="container px-5">
+            <div class="row gx-5">
+                <div class="col-lg-8 mb-5">
+                    <div class="badge badge-marketing rounded-pill bg-secondary-soft text-secondary mb-3">GPX Resultat</div>
+                    <h2>Resultat af dit løb herunder</h2>
+                    <p class="lead">Hvis alle cirkler er grønne er alt godt. Røde cirkler skal undersøges. Har du været ved podterne med rød cirkel sætter du
+                        flueben ud for posten i tabellen herunder.
+                        Når du har været over de røde cirkler trykker du på INDSEND rettelser knappen.
+                    </p>
+                    <form>{{ form.hidden_tag() }}
+                    </form>
+                    
+                </div>
+            </div>
+            <div class="accordion shadow mb-5" id="accordionAuth">
+                <div class="accordion-item">
+                    <div class="d-flex align-items-center justify-content-between px-4 py-5">
+                        <div class="me-3">
+                            <h4 class="mb-0">Authentication issues</h4>
+                            <p class="card-text text-gray-500">Issues related to logging in, registering a new account, and setting your account password</p>
+                        </div>
+                        <div class="badge bg-success-soft rounded-pill text-success">3 Answers</div>
+                    </div>
+                </div>
+            <div class="accordion-item">
+                <h5 class="accordion-header" id="headingOne"><button class="accordion-button p-4" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">Oversigt i tabelformat.</button></h5>
+                <div class="accordion-collapse collapse show" id="collapseOne" aria-labelledby="headingOne" data-bs-parent="#accordionAuth">
+                    <div class="accordion-body p-6">
+                        <div class="card-body">
+                            <table>
+                                {% if resultat %}
+                                <tr>
+                                    {% for key in resultat[0] %}
+                                <th>{{key}}</th>
+                                    {% endfor %}
+                                </tr>
+                                {% endif %}
+                                {% for dict_item in resultat %}
+                                <tr>
+                                    {% for value in dict_item.values() %}
+                                <td>{{value}}</td>
+                                    {% endfor %}
+                                </tr>
+                                {% endfor %}
+                            </table>
+                           
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="accordion-item">
+                <h5 class="accordion-header" id="headingTwo"><button class="accordion-button p-4 collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">Oversigt i kort form:</button></h5>
+                <div class="accordion-collapse collapse" id="collapseTwo" aria-labelledby="headingTwo" data-bs-parent="#accordionAuth"><div class="accordion-body p-6">
+                </div>
+                    {{ map | safe}}
+                </div>
+            </div>
+        </div>
+    </section>    
+            
+
+{% endblock app_content%}
+{% endblock %}
+{% block scripts %}
+    {{ super() }}
+    <script src="https://unpkg.com/gridjs/dist/gridjs.umd.js"></script>
+   
+{% endblock scripts %}

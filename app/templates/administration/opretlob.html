@@ -1,0 +1,145 @@
+{% extends "base.html" %} {% block title %}Tilmeld{% endblock %}
+{% from 'bootstrap5/nav.html' import render_breadcrumb_item %}
+{% from 'bootstrap5/form.html' import render_form, render_field %}
+
+
+
+{% block content %}
+{% block app_content%}
+<link rel="stylesheet" href="{{ url_for('static', filename='tab.css') }}">
+<!--<script src="{{ url_for('static', filename='datepicker/datepicker.css') }}"></script>-->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/vanillajs-datepicker@1.2.0/dist/css/datepicker-bs5.min.css">
+
+<section class="bg-side-1 py-10">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-7 col-md-12">
+                <form class="card" method="POST">
+                    {{ form.hidden_tag() }}
+                    <div class="card-body">
+                        <h4 class="card-header">Opret Løb</h4>
+                        <h5 class="card-title">Oplysninger</h5>
+                        <div class="row gy-5">
+                            
+                            <div class="col-md-4">
+                                <label class="form-label">Skov</label>
+                                <input class="form-control" type="text" id="skov" name="skov" placeholder="Skov" value="{{ Skov }}" {% if skov %}readonly{% endif %}>
+                            </div>
+                            <div class="col-md-4">
+                                <label class="form-label">Vælg klub</label>
+                                <div class="col-md-4">
+                                    <select class="profile-country-choices" data-customclass="form-select" id="klub" name="klub">
+                                        {% for j in klubber %}
+                                            {% if j in klubber %}
+                                            <option value="{{ j }}" selected>{{ j }}</option>
+                                            {% else %}
+                                            <option value= {{ j }}>{{ j }}</option>
+                                            {% endif %}
+                                        {% endfor %}
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <label class="form-label text-dark">Dato </label>
+                                
+                                <input class="form-control" id="dato" name="dato" type="text" value="{{ idag }}">
+                            </div>
+                            
+                            <div class="col-md-4">
+                                <label class="form-label">Løbs type</label>
+                                <input class="form-control" type="text" id="type" placeholder="type" name="type" value="{{ Type }}" {% if Type %}readonly{% endif %}>
+                            </div>
+                            <div class="col-md-4">
+                                <label class="form-label">Ansvarlig</label>
+                                <input class="form-control" type="text" id="ansvarlig" placeholder="Ansvarlig" name="ansvarlig" value="{{ Ansvarlig }}" {% if Andet %}readonly{% endif %}>
+                            </div>
+                            <div class="col-md-4">
+                                <label class="form-label">Andet</label>
+                                <input class="form-control" type="text" id="andet" placeholder="Andet" name="andet" value="{{ Andet }}" {% if Andet %}readonly{% endif %}>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="col-md-4">
+                                    <label class="form-label">Emit enheder</label>
+                                    <select class="profile-country-choices" data-customclass="form-select" id="emitenheder" name="emitenheder">
+                                        <option value="Ja">Ja</option>
+                                        <option value="Nej" selected>Nej</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="col-md-4">
+                                    <label class="form-label">Klarmeldt</label>
+                                    <select class="profile-country-choices" data-customclass="form-select" id="klarmeldt" name="klarmeldt">
+                                        <option value="Ja">Ja</option>
+                                        <option value="Nej" selected>Nej</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="col-md-4">
+                                    <label class="form-label">Kort til selvprint</label>
+                                    <select class="profile-country-choices" data-customclass="form-select" id="kort" name="kort">
+                                        <option value="Ja">Ja</option>
+                                        <option value="Nej" selected>Nej</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div align="center">
+                            <button class="btn btn-primary" name="Vælg" id="submit_1" type="submit" >Opret løb</button>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+<section class="bg-side-2 py-2">
+                    
+	<div class="container"> 
+		<nav style="--bs-breadcrumb-divider: ' ';" aria-label="breadcrumb">
+			
+			<ol class="breadcrumb">
+			   
+				{% block breadcrumb %}
+				
+					{{ render_breadcrumb_item('administration.opretlob', 'Opret nyt løb') }}
+					{{ render_breadcrumb_item('administration.tilfoj_kort', 'Tilføj kort til løb') }}
+					{{ render_breadcrumb_item('administration.tilfoj_KMZfil', 'Tilføj KMZ til løb') }}
+				  
+				{% endblock breadcrumb %}
+				
+			</ol>
+			
+		</nav>
+	</div>
+	
+</section>
+{% endblock app_content%}
+{% endblock content %}
+
+{% block scripts %}
+<script src="https://cdn.jsdelivr.net/npm/vanillajs-datepicker@1.2.0/dist/js/datepicker.min.js"></script>
+<!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="{{ url_for('static', filename='datepicker/datepicker-full.js') }}"></script>-->
+<script src="{{ url_for('static', filename='datepicker/locales/da.js') }}"></script>
+<Script>
+//const datepicker = new Datepicker(document.querySelector(".input-datepicker"), {
+//    buttonClass: "btn",
+    //format: "yyyy-mm-dd",
+//    format: "dd-mm-yyyy",
+//});
+</Script>
+
+<!-- Script -->
+<script type="text/javascript">
+    const elem = document.getElementById('dato');
+    const datepicker = new Datepicker(elem, {
+        buttonClass: "btn",
+        //format: "yyyy-mm-dd",
+        format: "dd-mm-yyyy",
+        // ...options
+    }); 
+</script>
+
+{% endblock scripts%}

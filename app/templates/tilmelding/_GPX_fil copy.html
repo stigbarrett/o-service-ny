@@ -1,0 +1,167 @@
+{% extends "base.html" %} {% block title %}Tilmeld{% endblock %}
+{% from 'bootstrap5/nav.html' import render_breadcrumb_item %}
+{% from 'bootstrap5/form.html' import render_form, render_field %}
+
+
+
+{% block content %}
+{% block app_content %}
+<script
+			  src="https://code.jquery.com/jquery-3.6.0.js"
+			  integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk="
+			  crossorigin="anonymous"></script>
+
+<link rel="stylesheet" href="{{ url_for('static', filename='tab.css') }}">
+
+<section class="container mt-2 mt-sm-3 py-md-3 py-lg-5">
+    <div class="masonry-grid-item col pb-1 pb-lg-4">
+        <div class="row">
+            <div class="col-xl-12 col-lg-12">
+                <div class="pe-xl-5">
+                    <div class="masonry-grid row row-cols-sm-2 row-cols-1 g-4">
+                        <form class="card" id="form2" method="POST" method="GET" enctype="multipart/form-data">
+                            {{ form.hidden_tag() }}
+                            <div class="card-header ">
+                                <h4 class="card-header">GPX fil fra Garmin, Strava e.l.</h4>
+                            </div>
+                            <div class="card-body">
+                                <div class="row gy-5">
+                                    <div class="col-md-7">
+                                        <h3>Vælg løb:</h3>
+                                        <select data-customclass="form-select" id="loeb" name="loeb">
+                                            {% for key, value in loeb_alle.items() %}
+                                                <option value={{ key }}>{{ value }}</option>
+                                            {% endfor %}
+                                        </select>
+                                    </div>
+                                    <div class="col-md-7">
+                                        <h3>Vælg bane du løb:</h3>
+                                        <select data-customclass="form-select" id="baner" name="baner">
+                                            {% for key, value in baner_alle.items() %}
+                                                <option value={{ key }}>{{ value }}</option>
+                                            {% endfor %}
+                                        </select>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <label class="form-label">Navn</label>
+                                        <input type="text" id="navn" name="navn" class="form-control" placeholder="navn"/>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <label class="form-label">Klub</label>
+                                        <input type="text" id="klub" name="klub" class="form-control" placeholder="klub"/>
+                                    </div>
+                                    <H3><label for="gpx-upload" class="form-label">Tilføj GPX fil</label></H3>
+                                    <input type="file" name="GPX_file" accept=".gpx">
+                                    <div align="center">
+                                        <button class="btn btn-primary" id="submit" type="submit" >Tilføj GPX fil</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="masonry-grid row row-cols-sm-2 row-cols-1 g-4">
+                        <div class="col-lg-5 col-md-5">
+                            <div class="card">
+                                <div class="card">
+                                    <div class="card-header">
+                                        <h4 class="card-header border-bottom">{{ navn }} {{ bane }} Din postpassager</h4>
+                                    </div>
+                                    <div class="card-body">
+                                        <table>
+                                            {% if resultat %}
+                                            <tr>
+                                                {% for key in resultat[0] %}
+                                            <th>{{key}}</th>
+                                                {% endfor %}
+                                            </tr>
+                                            {% endif %}
+                                            {% for dict_item in resultat %}
+                                            <tr>
+                                                {% for value in dict_item.values() %}
+                                            <td>{{value}}</td>
+                                                {% endfor %}
+                                            </tr>
+                                            {% endfor %}
+                                        </table> 
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>                    
+                    <div class="masonry-grid row row-cols-sm-2 row-cols-1 g-4">
+                                
+                        <div class="card">
+                            <div class="card-header border-buttom">
+                                <h4 class="card-header">Oversigt over dit løb</h4>
+                            </div>
+                            <div class="card-body" height="100%">
+                                <div>
+                                {{ map | safe}}
+                                </div>
+                            </div>
+                        </div>
+                        
+                    </div>      
+                </div>    
+            </div>
+        </div>
+    </div>
+</section>
+
+
+{% endblock app_content%}
+
+{% endblock content %}
+
+{% block scripts %}
+{{ super() }}
+<script charset="utf-8" type="text/javascript">
+    $(function() {
+    
+        // jQuery selection for  select box baner
+        var dropdown = {
+            konkurrence: $('#loeb'),
+            bane: $('#baner')
+        };
+    
+        // call to update on load
+        
+        
+    
+        // function to call XHR and update county dropdown
+        function updateBanerne() {
+            var send = {
+                konkurrence: dropdown.konkurrence.val()
+            };
+            console.log(send);
+            console.log("Tekst");
+            
+            dropdown.bane.attr('disabled', 'disabled');
+            dropdown.bane.empty();
+            
+            $.getJSON("{{ url_for('.hent_baner') }}", send, function(data) {
+                data.forEach(function(item) {
+                    dropdown.bane.append(
+                        $('<option>', {
+                            value: item[0],
+                            text: item[1]
+                        })
+                    );
+                });
+                
+                dropdown.bane.removeAttr('disabled');
+            });
+        }
+        
+        // event listener to state dropdown change
+        $(document).ready(function(){
+            dropdown.konkurrence.on('change', function() {
+            updateBanerne();
+            });
+        })
+        
+    });
+
+</script>
+
+{% endblock scripts%}

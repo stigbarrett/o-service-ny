@@ -1,0 +1,22 @@
+{% extends 'Base_nav.html' %}
+{% from 'bootstrap5/form.html' import render_form %}
+
+{% block breadcrumb %}{%endblock breadcrumb %}
+{% block app_content %}
+    <section class="bg-side-1 py-10">
+        <div class="container">
+            <h1>{{ _('Log Ind') }}</h1>
+            <div class="row">
+                <div class="col-md-4">
+                    {{ render_form(form) }}
+                </div>
+            </div>
+            <br>
+            <p>{{ _('Ny Bruger?') }} <a href="{{ url_for('auth.register') }}">{{ _('Klik for Registrering!') }}</a></p>
+            <p>
+                {{ _('Glemt dit Password?') }}
+                <a href="{{ url_for('auth.reset_password_request') }}">{{ _('Klik for at nulstille Password') }}</a>
+            </p>
+        </div>
+    </section>   
+{% endblock %}

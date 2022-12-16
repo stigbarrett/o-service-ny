@@ -1,0 +1,85 @@
+{% extends "Base_nav.html" %}
+{% from 'bootstrap5/form.html' import render_form, render_field %}
+
+{% block app_content %}
+
+<section class="bg-side-1 py-10">
+    <div class="container">
+		<header class="page-header page-header-dark">
+			<div class="page-header-content">
+				<div class="container text-center">
+					<div class="row justify-content-center">
+						<div class="row justify-content-center">
+							<div class="col-lg-12">
+								<h2 class="page-header-title mb-4">Resultater og Stræktider</h2>
+								<form action="" method="POST" class="">
+									{{ form.hidden_tag() }} 
+								</form>
+								{{ map | safe}}
+								<button id="knap1" class="btn-orange active" aria-pressed="true" onclick="resultat()">Vis resultater</button>          <button id="knap2" class="btn-orange active" aria-pressed="true" onclick="strakNy()">Vis stræktider</button> 
+
+								
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</header>
+
+		<div class="container">
+			<div class="row justify-content-center">
+				<div class="col-lg-10 col-xl-12">
+					<div class="single-post">
+						<center>
+							<!--<h2><a id="overskrift" target=”_blank”><img src={{ url_for('static', filename='assets/img/otrack50.jpg') }}></a></h2>-->
+						</center>
+						<center>
+							<div id="myGrid" style="height:600px; width:100%" class="ag-theme-balham"></div>
+						</center>					
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+<section class="bg-side-2 py-2">
+                    
+	<div class="container"> 
+		<nav style="--bs-breadcrumb-divider: ' ';" aria-label="breadcrumb">
+			
+			<ol class="breadcrumb">
+			   
+				{% block breadcrumb %}
+				
+					{{ render_breadcrumb_item('resultater.XMLvis_resultater', 'Resultater 2022') }}
+					{{ render_breadcrumb_item('main.explore', 'Point 2022') }}
+					{{ render_breadcrumb_item('main.explore', 'Resultat Arkiv') }}
+					{{ render_breadcrumb_item('main.explore', 'Point Arkiv') }}
+				  
+				{% endblock breadcrumb %}
+				
+			</ol>
+			
+		</nav>
+	</div>
+	
+</section>
+	<!--<script src="https://cdn.jsdelivr.net/npm/leaflet@1.6.0/dist/leaflet-src.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/leaflet@1.6.0/dist/leaflet.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet-gpx/1.5.0/gpx.min.js"></script>-->
+	<!--<script src={{ url_for('static', filename='js/XMLresultater.js') }}></script>-->
+	<!--<script src="https://unpkg.com/leaflet@1.6.0/dist/leaflet.js"></script>-->
+	<!-- Leaflet-KMZ -->
+	<!--<script src="https://unpkg.com/leaflet-kmz@latest/dist/leaflet-kmz.js"></script>-->
+    
+
+{% endblock app_content %}
+
+{% block scripts %}
+	{{ super() }}
+	
+	
+
+{% endblock scripts %}
+
+	

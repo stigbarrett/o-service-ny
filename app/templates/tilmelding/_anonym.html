@@ -1,0 +1,25 @@
+<div class="masonry-grid-item col pb-2 pb-lg-3">
+	<article class="card">
+	  <div class="card-body">
+        <p class="mb-4">
+			<form class="row g-4 needs-validation" method="post" novalidate>
+				<input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+					<div class="col-sm-6">
+						<label for="navn" class="form-label fs-base">Vælg løber der skal rettes</label>
+						<select class="form-select form-select-lg" data-customclass="form-select" id="navn" name="navn" required>
+							{% if dropdowndata != '' %}
+							{% for key1, value1 in dropdowndata.items() %}
+								{% if loop.first %}
+								<option value= "" disabled selected>Vælg løber</option>
+								{% endif %}
+								<option value= "{{ key1 }}">{{ value1 }}</option>
+							{% endfor %}
+							{% endif %}
+						</select>
+						<div class="invalid-feedback">Vælg et navn fra listen!</div>
+					</div>
+                </form>
+            </p>
+        </article>
+    </div>
+</div>

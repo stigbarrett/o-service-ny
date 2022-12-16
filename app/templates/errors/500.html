@@ -1,0 +1,7 @@
+{% extends "base.html" %}
+
+{% block app_content %}
+    <h1>{{ _('En uventet fejl er opstået') }}</h1>
+    <p>{{ _('Administrator har fået besked. Beklager fejlen!') }}</p>
+    <p><a href="{{ url_for('main.index') }}">{{ _('Back') }}</a></p>
+{% endblock %}

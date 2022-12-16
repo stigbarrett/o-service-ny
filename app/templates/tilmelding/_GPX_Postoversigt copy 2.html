@@ -1,0 +1,95 @@
+
+<link href="https://unpkg.com/gridjs/dist/theme/mermaid.min.css" rel="stylesheet" />
+
+<div class="masonry-grid-item col pb-1 pb-lg-5">
+	<article class="card">
+	  	<div class="card-body">
+        <form><input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+            <input type="hidden" name="banedata_id" value="{{ banedata_id }}">
+            <h3 class="h4">{{ navn }} - {{ bane }} - Dine stræk. {{ konkurrencenavn }}</h3>
+            <div class="card-body">
+                <div id="table"></div>    
+            </div>
+          </form>
+      </div>
+	</article>
+</div>
+<script src="https://unpkg.com/gridjs/dist/gridjs.umd.js"></script>
+
+<script>
+    
+    const tableDiv = document.getElementById('table');
+
+    const editableCellAttributes = (data, row, col) => {
+          if (row) {
+            return {contentEditable: 'true', 'data-element-id': row.cells[0].data};
+          }
+          else {
+            return {};
+          }
+      };
+
+    let banedataID = "{{ banedata_id }}";
+    let url1 = "{{url_for('tilmelding.data', baneresultatID='idher')}}".replace("idher", banedataID);
+    let url2 = "{{url_for('tilmelding.update')}}";
+    let csrf = "{{ csrf_token() }}";
+
+    new gridjs.Grid({
+      columns: [
+        { id: 'id', 'hidden': true },
+        { id: 'Post', name: 'Post', sort: false },
+        { id: 'Status', name: 'Status', sort: false, 'attributes': editableCellAttributes },
+        { id: 'Afstand', name: 'Afstand fra post', sort: false },
+        { id: 'Straek', name: 'Stræk distance', sort: false },
+        { id: 'Straektid', name: 'Stræktid', sort: false },
+        { id: 'Samlet', name: 'Samlet hertil', sort: false },
+        { id: 'Distance', name: 'Distance hertil', sort: false }
+      ],
+      height: '400px',
+      server: {
+        url: url1,
+        then: results => results.data,
+      },
+      fixedHeader: true,
+    }).render(tableDiv);
+
+    let savedValue;
+
+      tableDiv.addEventListener('focusin', ev => {
+        if (ev.target.tagName === 'TD') {
+          savedValue = ev.target.textContent;
+        }
+      });
+
+      tableDiv.addEventListener('focusout', ev => {
+        if (ev.target.tagName === 'TD') {
+          if (savedValue !== ev.target.textContent) {
+            fetch("{{url_for('tilmelding.update')}}", {
+              method: 'POST',
+              headers: {'Content-Type': 'application/json',
+                'X-CSRF-TOKEN': csrf,
+                },
+              body: JSON.stringify({
+                id: ev.target.dataset.elementId,
+                [ev.target.dataset.columnId]: ev.target.textContent
+              }),
+            });
+          }
+          savedValue = undefined;
+        }
+      });
+
+      tableDiv.addEventListener('keydown', ev => {
+        if (ev.target.tagName === 'TD') {
+          if (ev.key === 'Escape') {
+            ev.target.textContent = savedValue;
+            ev.target.blur();
+          }
+          else if (ev.key === 'Enter') {
+            ev.preventDefault();
+            ev.target.blur();
+          }
+        }
+      });
+  </script>
+

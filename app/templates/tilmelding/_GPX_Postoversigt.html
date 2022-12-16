@@ -1,0 +1,33 @@
+
+
+<link rel="stylesheet" href="https://unpkg.com/ag-grid-community/dist/styles/ag-grid.css">
+<link rel="stylesheet" href="https://unpkg.com/ag-grid-community/dist/styles/ag-theme-material.css">
+<link href="https://unpkg.com/gridjs/dist/theme/mermaid.min.css" rel="stylesheet" />
+
+<div class="masonry-grid-item col pb-1 pb-lg-5">
+	<article class="card">
+	  	<div class="card-body">
+        <form><input type="hidden" name="csrf_token" id="csfr_token" value="{{ csrf_token() }}">
+            <input type="hidden" name="banedata_id" id="banedata_id" value="{{ banedata_id }}">
+            <h3 class="h4">{{ navn }} - {{ bane }} - Dine stræk. {{ konkurrencenavn }}</h3>
+            <div class="card-body">
+                <div id="table"></div>
+                Selection:
+                <span id="selectedRows">
+                </span>
+                <center>
+                <div id="myGrid" style="height:600px; width:100%" class="ag-theme-balham"></div>
+                </center>					
+            </div>
+          </form>
+      </div>
+	</article>
+</div>
+<script src="https://code.jquery.com/jquery-3.6.1.js" integrity="sha256-3zlB5s2uwoUzrXK3BT7AX3FyvojsraNFxCc2vC/7pNI=" crossorigin="anonymous"></script>
+<!--<script src="https://unpkg.com/@ag-grid-enterprise/all-modules@28.2.1/dist/ag-grid-enterprise.js"></script>-->
+<script src="https://cdn.jsdelivr.net/npm/ag-grid-enterprise/dist/ag-grid-enterprise.js"></script>
+
+<script src="https://unpkg.com/gridjs/dist/gridjs.umd.js"></script>
+<script src="{{ url_for('static', filename='js/GPXdata.js') }}"></script>
+
+

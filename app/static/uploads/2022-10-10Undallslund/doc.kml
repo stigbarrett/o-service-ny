@@ -1,0 +1,2213 @@
+<?xml version="1.0" standalone="no" ?>
+<kml
+	xmlns="http://www.opengis.net/kml/2.2" 
+	xmlns:gx="http://www.google.com/kml/ext/2.2" 
+	xmlns:atom="http://www.w3.org/2005/Atom" 
+	xmlns:cs="http://www.orienteering.org/schemas/course-setting" 	createTime="2022-10-08T11:54:06" 	creator="Condes version 10.3.3" >
+	<Folder>
+		<name>22.10.10 Poster i Undallslund</name>
+
+		<Folder>
+			<name>Canvas 1  (1:7.500)</name>
+
+			<GroundOverlay id="Canvas 1 Map" >
+				<name>Canvas 1 Map</name>
+				<Icon>
+					<href>files/Canvas 1 Map.jpg</href>
+				</Icon>
+				<gx:LatLonQuad>
+					<coordinates>
+						9.3521002853,56.4702203044 9.3863367145,56.4701185073 9.3864749939,56.4837293325 9.3522263113,56.4838311818
+					</coordinates>
+				</gx:LatLonQuad>
+				<LatLonBox>
+					<north>56.4837815379</north>
+					<south>56.4701704978</south>
+					<east>9.3864060989</east>
+					<west>9.3521614572</west>
+					<rotation>-0.3072956085</rotation>
+				</LatLonBox>
+			</GroundOverlay>
+
+			<Folder>
+				<name>Bane 1</name>
+
+				<Folder>
+					<name>Coordinates</name>
+
+					<Placemark id="S" >
+						<name>(S)</name>
+						<ExtendedData>
+							<Data name="cs:object-type" >
+								<value>Start</value>
+							</Data>
+							<Data name="cs:control-code" >
+								<value>S</value>
+							</Data>
+						</ExtendedData>
+
+						<Point>
+							<coordinates>9.3844593086,56.4737108801</coordinates>
+						</Point>
+					</Placemark>
+					<Placemark id="101" >
+						<name>1 (101)</name>
+						<ExtendedData>
+							<Data name="cs:object-type" >
+								<value>Control</value>
+							</Data>
+							<Data name="cs:control-code" >
+								<value>101</value>
+							</Data>
+						</ExtendedData>
+
+						<Point>
+							<coordinates>9.3813889485,56.4749395211</coordinates>
+						</Point>
+					</Placemark>
+					<Placemark id="102" >
+						<name>2 (102)</name>
+						<ExtendedData>
+							<Data name="cs:object-type" >
+								<value>Control</value>
+							</Data>
+							<Data name="cs:control-code" >
+								<value>102</value>
+							</Data>
+						</ExtendedData>
+
+						<Point>
+							<coordinates>9.3835634283,56.4755006335</coordinates>
+						</Point>
+					</Placemark>
+					<Placemark id="103" >
+						<name>3 (103)</name>
+						<ExtendedData>
+							<Data name="cs:object-type" >
+								<value>Control</value>
+							</Data>
+							<Data name="cs:control-code" >
+								<value>103</value>
+							</Data>
+						</ExtendedData>
+
+						<Point>
+							<coordinates>9.3829267176,56.4767568104</coordinates>
+						</Point>
+					</Placemark>
+					<Placemark id="104" >
+						<name>4 (104)</name>
+						<ExtendedData>
+							<Data name="cs:object-type" >
+								<value>Control</value>
+							</Data>
+							<Data name="cs:control-code" >
+								<value>104</value>
+							</Data>
+						</ExtendedData>
+
+						<Point>
+							<coordinates>9.3813830599,56.4772664797</coordinates>
+						</Point>
+					</Placemark>
+					<Placemark id="105" >
+						<name>5 (105)</name>
+						<ExtendedData>
+							<Data name="cs:object-type" >
+								<value>Control</value>
+							</Data>
+							<Data name="cs:control-code" >
+								<value>105</value>
+							</Data>
+						</ExtendedData>
+
+						<Point>
+							<coordinates>9.3767125569,56.4756491818</coordinates>
+						</Point>
+					</Placemark>
+					<Placemark id="106" >
+						<name>6 (106)</name>
+						<ExtendedData>
+							<Data name="cs:object-type" >
+								<value>Control</value>
+							</Data>
+							<Data name="cs:control-code" >
+								<value>106</value>
+							</Data>
+						</ExtendedData>
+
+						<Point>
+							<coordinates>9.3764700513,56.4783748623</coordinates>
+						</Point>
+					</Placemark>
+					<Placemark id="107" >
+						<name>7 (107)</name>
+						<ExtendedData>
+							<Data name="cs:object-type" >
+								<value>Control</value>
+							</Data>
+							<Data name="cs:control-code" >
+								<value>107</value>
+							</Data>
+						</ExtendedData>
+
+						<Point>
+							<coordinates>9.3762512816,56.4807132451</coordinates>
+						</Point>
+					</Placemark>
+					<Placemark id="108" >
+						<name>8 (108)</name>
+						<ExtendedData>
+							<Data name="cs:object-type" >
+								<value>Control</value>
+							</Data>
+							<Data name="cs:control-code" >
+								<value>108</value>
+							</Data>
+						</ExtendedData>
+
+						<Point>
+							<coordinates>9.3748276664,56.4818962920</coordinates>
+						</Point>
+					</Placemark>
+					<Placemark id="109" >
+						<name>9 (109)</name>
+						<ExtendedData>
+							<Data name="cs:object-type" >
+								<value>Control</value>
+							</Data>
+							<Data name="cs:control-code" >
+								<value>109</value>
+							</Data>
+						</ExtendedData>
+
+						<Point>
+							<coordinates>9.3732629313,56.4804563266</coordinates>
+						</Point>
+					</Placemark>
+					<Placemark id="110" >
+						<name>10 (110)</name>
+						<ExtendedData>
+							<Data name="cs:object-type" >
+								<value>Control</value>
+							</Data>
+							<Data name="cs:control-code" >
+								<value>110</value>
+							</Data>
+						</ExtendedData>
+
+						<Point>
+							<coordinates>9.3696380386,56.4791833095</coordinates>
+						</Point>
+					</Placemark>
+					<Placemark id="111" >
+						<name>11 (111)</name>
+						<ExtendedData>
+							<Data name="cs:object-type" >
+								<value>Control</value>
+							</Data>
+							<Data name="cs:control-code" >
+								<value>111</value>
+							</Data>
+						</ExtendedData>
+
+						<Point>
+							<coordinates>9.3666248587,56.4803754754</coordinates>
+						</Point>
+					</Placemark>
+					<Placemark id="112" >
+						<name>12 (112)</name>
+						<ExtendedData>
+							<Data name="cs:object-type" >
+								<value>Control</value>
+							</Data>
+							<Data name="cs:control-code" >
+								<value>112</value>
+							</Data>
+						</ExtendedData>
+
+						<Point>
+							<coordinates>9.3668990852,56.4818732490</coordinates>
+						</Point>
+					</Placemark>
+					<Placemark id="113" >
+						<name>13 (113)</name>
+						<ExtendedData>
+							<Data name="cs:object-type" >
+								<value>Control</value>
+							</Data>
+							<Data name="cs:control-code" >
+								<value>113</value>
+							</Data>
+						</ExtendedData>
+
+						<Point>
+							<coordinates>9.3621353362,56.4803473196</coordinates>
+						</Point>
+					</Placemark>
+					<Placemark id="114" >
+						<name>14 (114)</name>
+						<ExtendedData>
+							<Data name="cs:object-type" >
+								<value>Control</value>
+							</Data>
+							<Data name="cs:control-code" >
+								<value>114</value>
+							</Data>
+						</ExtendedData>
+
+						<Point>
+							<coordinates>9.3651006075,56.4790547793</coordinates>
+						</Point>
+					</Placemark>
+					<Placemark id="115" >
+						<name>15 (115)</name>
+						<ExtendedData>
+							<Data name="cs:object-type" >
+								<value>Control</value>
+							</Data>
+							<Data name="cs:control-code" >
+								<value>115</value>
+							</Data>
+						</ExtendedData>
+
+						<Point>
+							<coordinates>9.3625470191,56.4780587121</coordinates>
+						</Point>
+					</Placemark>
+					<Placemark id="116" >
+						<name>16 (116)</name>
+						<ExtendedData>
+							<Data name="cs:object-type" >
+								<value>Control</value>
+							</Data>
+							<Data name="cs:control-code" >
+								<value>116</value>
+							</Data>
+						</ExtendedData>
+
+						<Point>
+							<coordinates>9.3626725051,56.4757251184</coordinates>
+						</Point>
+					</Placemark>
+					<Placemark id="117" >
+						<name>17 (117)</name>
+						<ExtendedData>
+							<Data name="cs:object-type" >
+								<value>Control</value>
+							</Data>
+							<Data name="cs:control-code" >
+								<value>117</value>
+							</Data>
+						</ExtendedData>
+
+						<Point>
+							<coordinates>9.3675812711,56.4751797124</coordinates>
+						</Point>
+					</Placemark>
+					<Placemark id="125" >
+						<name>18 (125)</name>
+						<ExtendedData>
+							<Data name="cs:object-type" >
+								<value>Control</value>
+							</Data>
+							<Data name="cs:control-code" >
+								<value>125</value>
+							</Data>
+						</ExtendedData>
+
+						<Point>
+							<coordinates>9.3667004597,56.4740718542</coordinates>
+						</Point>
+					</Placemark>
+					<Placemark id="118" >
+						<name>19 (118)</name>
+						<ExtendedData>
+							<Data name="cs:object-type" >
+								<value>Control</value>
+							</Data>
+							<Data name="cs:control-code" >
+								<value>118</value>
+							</Data>
+						</ExtendedData>
+
+						<Point>
+							<coordinates>9.3707934465,56.4734640398</coordinates>
+						</Point>
+					</Placemark>
+					<Placemark id="119" >
+						<name>20 (119)</name>
+						<ExtendedData>
+							<Data name="cs:object-type" >
+								<value>Control</value>
+							</Data>
+							<Data name="cs:control-code" >
+								<value>119</value>
+							</Data>
+						</ExtendedData>
+
+						<Point>
+							<coordinates>9.3773141637,56.4741083403</coordinates>
+						</Point>
+					</Placemark>
+					<Placemark id="120" >
+						<name>21 (120)</name>
+						<ExtendedData>
+							<Data name="cs:object-type" >
+								<value>Control</value>
+							</Data>
+							<Data name="cs:control-code" >
+								<value>120</value>
+							</Data>
+						</ExtendedData>
+
+						<Point>
+							<coordinates>9.3801463221,56.4727529518</coordinates>
+						</Point>
+					</Placemark>
+					<Placemark id="M" >
+						<name>(M)</name>
+						<ExtendedData>
+							<Data name="cs:object-type" >
+								<value>Finish</value>
+							</Data>
+							<Data name="cs:control-code" >
+								<value>M</value>
+							</Data>
+						</ExtendedData>
+
+						<Point>
+							<coordinates>9.3838875839,56.4733577677</coordinates>
+						</Point>
+					</Placemark>
+				</Folder>
+
+				<GroundOverlay id="SVG" >
+					<name>SVG</name>
+					<Icon>
+						<href>files/Canvas 1 Bane 1.SVG</href>
+					</Icon>
+					<gx:LatLonQuad>
+						<coordinates>
+							9.3521002853,56.4702203044 9.3863367145,56.4701185073 9.3864749939,56.4837293325 9.3522263113,56.4838311818
+						</coordinates>
+					</gx:LatLonQuad>
+					<LatLonBox>
+						<north>56.4837815379</north>
+						<south>56.4701704978</south>
+						<east>9.3864060989</east>
+						<west>9.3521614572</west>
+						<rotation>-0.3072956085</rotation>
+					</LatLonBox>
+				</GroundOverlay>
+
+			</Folder>
+
+			<Folder>
+				<name>Bane 2</name>
+
+				<Folder>
+					<name>Coordinates</name>
+
+					<Placemark id="S" >
+						<name>(S)</name>
+						<ExtendedData>
+							<Data name="cs:object-type" >
+								<value>Start</value>
+							</Data>
+							<Data name="cs:control-code" >
+								<value>S</value>
+							</Data>
+						</ExtendedData>
+
+						<Point>
+							<coordinates>9.3844593086,56.4737108801</coordinates>
+						</Point>
+					</Placemark>
+					<Placemark id="101" >
+						<name>1 (101)</name>
+						<ExtendedData>
+							<Data name="cs:object-type" >
+								<value>Control</value>
+							</Data>
+							<Data name="cs:control-code" >
+								<value>101</value>
+							</Data>
+						</ExtendedData>
+
+						<Point>
+							<coordinates>9.3813889485,56.4749395211</coordinates>
+						</Point>
+					</Placemark>
+					<Placemark id="102" >
+						<name>2 (102)</name>
+						<ExtendedData>
+							<Data name="cs:object-type" >
+								<value>Control</value>
+							</Data>
+							<Data name="cs:control-code" >
+								<value>102</value>
+							</Data>
+						</ExtendedData>
+
+						<Point>
+							<coordinates>9.3835634283,56.4755006335</coordinates>
+						</Point>
+					</Placemark>
+					<Placemark id="103" >
+						<name>3 (103)</name>
+						<ExtendedData>
+							<Data name="cs:object-type" >
+								<value>Control</value>
+							</Data>
+							<Data name="cs:control-code" >
+								<value>103</value>
+							</Data>
+						</ExtendedData>
+
+						<Point>
+							<coordinates>9.3829267176,56.4767568104</coordinates>
+						</Point>
+					</Placemark>
+					<Placemark id="104" >
+						<name>4 (104)</name>
+						<ExtendedData>
+							<Data name="cs:object-type" >
+								<value>Control</value>
+							</Data>
+							<Data name="cs:control-code" >
+								<value>104</value>
+							</Data>
+						</ExtendedData>
+
+						<Point>
+							<coordinates>9.3813830599,56.4772664797</coordinates>
+						</Point>
+					</Placemark>
+					<Placemark id="105" >
+						<name>5 (105)</name>
+						<ExtendedData>
+							<Data name="cs:object-type" >
+								<value>Control</value>
+							</Data>
+							<Data name="cs:control-code" >
+								<value>105</value>
+							</Data>
+						</ExtendedData>
+
+						<Point>
+							<coordinates>9.3767125569,56.4756491818</coordinates>
+						</Point>
+					</Placemark>
+					<Placemark id="106" >
+						<name>6 (106)</name>
+						<ExtendedData>
+							<Data name="cs:object-type" >
+								<value>Control</value>
+							</Data>
+							<Data name="cs:control-code" >
+								<value>106</value>
+							</Data>
+						</ExtendedData>
+
+						<Point>
+							<coordinates>9.3764700513,56.4783748623</coordinates>
+						</Point>
+					</Placemark>
+					<Placemark id="107" >
+						<name>7 (107)</name>
+						<ExtendedData>
+							<Data name="cs:object-type" >
+								<value>Control</value>
+							</Data>
+							<Data name="cs:control-code" >
+								<value>107</value>
+							</Data>
+						</ExtendedData>
+
+						<Point>
+							<coordinates>9.3762512816,56.4807132451</coordinates>
+						</Point>
+					</Placemark>
+					<Placemark id="108" >
+						<name>8 (108)</name>
+						<ExtendedData>
+							<Data name="cs:object-type" >
+								<value>Control</value>
+							</Data>
+							<Data name="cs:control-code" >
+								<value>108</value>
+							</Data>
+						</ExtendedData>
+
+						<Point>
+							<coordinates>9.3748276664,56.4818962920</coordinates>
+						</Point>
+					</Placemark>
+					<Placemark id="109" >
+						<name>9 (109)</name>
+						<ExtendedData>
+							<Data name="cs:object-type" >
+								<value>Control</value>
+							</Data>
+							<Data name="cs:control-code" >
+								<value>109</value>
+							</Data>
+						</ExtendedData>
+
+						<Point>
+							<coordinates>9.3732629313,56.4804563266</coordinates>
+						</Point>
+					</Placemark>
+					<Placemark id="110" >
+						<name>10 (110)</name>
+						<ExtendedData>
+							<Data name="cs:object-type" >
+								<value>Control</value>
+							</Data>
+							<Data name="cs:control-code" >
+								<value>110</value>
+							</Data>
+						</ExtendedData>
+
+						<Point>
+							<coordinates>9.3696380386,56.4791833095</coordinates>
+						</Point>
+					</Placemark>
+					<Placemark id="121" >
+						<name>11 (121)</name>
+						<ExtendedData>
+							<Data name="cs:object-type" >
+								<value>Control</value>
+							</Data>
+							<Data name="cs:control-code" >
+								<value>121</value>
+							</Data>
+						</ExtendedData>
+
+						<Point>
+							<coordinates>9.3678302373,56.4780943871</coordinates>
+						</Point>
+					</Placemark>
+					<Placemark id="126" >
+						<name>12 (126)</name>
+						<ExtendedData>
+							<Data name="cs:object-type" >
+								<value>Control</value>
+							</Data>
+							<Data name="cs:control-code" >
+								<value>126</value>
+							</Data>
+						</ExtendedData>
+
+						<Point>
+							<coordinates>9.3681626406,56.4767098170</coordinates>
+						</Point>
+					</Placemark>
+					<Placemark id="117" >
+						<name>13 (117)</name>
+						<ExtendedData>
+							<Data name="cs:object-type" >
+								<value>Control</value>
+							</Data>
+							<Data name="cs:control-code" >
+								<value>117</value>
+							</Data>
+						</ExtendedData>
+
+						<Point>
+							<coordinates>9.3675812711,56.4751797124</coordinates>
+						</Point>
+					</Placemark>
+					<Placemark id="125" >
+						<name>14 (125)</name>
+						<ExtendedData>
+							<Data name="cs:object-type" >
+								<value>Control</value>
+							</Data>
+							<Data name="cs:control-code" >
+								<value>125</value>
+							</Data>
+						</ExtendedData>
+
+						<Point>
+							<coordinates>9.3667004597,56.4740718542</coordinates>
+						</Point>
+					</Placemark>
+					<Placemark id="118" >
+						<name>15 (118)</name>
+						<ExtendedData>
+							<Data name="cs:object-type" >
+								<value>Control</value>
+							</Data>
+							<Data name="cs:control-code" >
+								<value>118</value>
+							</Data>
+						</ExtendedData>
+
+						<Point>
+							<coordinates>9.3707934465,56.4734640398</coordinates>
+						</Point>
+					</Placemark>
+					<Placemark id="119" >
+						<name>16 (119)</name>
+						<ExtendedData>
+							<Data name="cs:object-type" >
+								<value>Control</value>
+							</Data>
+							<Data name="cs:control-code" >
+								<value>119</value>
+							</Data>
+						</ExtendedData>
+
+						<Point>
+							<coordinates>9.3773141637,56.4741083403</coordinates>
+						</Point>
+					</Placemark>
+					<Placemark id="120" >
+						<name>17 (120)</name>
+						<ExtendedData>
+							<Data name="cs:object-type" >
+								<value>Control</value>
+							</Data>
+							<Data name="cs:control-code" >
+								<value>120</value>
+							</Data>
+						</ExtendedData>
+
+						<Point>
+							<coordinates>9.3801463221,56.4727529518</coordinates>
+						</Point>
+					</Placemark>
+					<Placemark id="M" >
+						<name>(M)</name>
+						<ExtendedData>
+							<Data name="cs:object-type" >
+								<value>Finish</value>
+							</Data>
+							<Data name="cs:control-code" >
+								<value>M</value>
+							</Data>
+						</ExtendedData>
+
+						<Point>
+							<coordinates>9.3838875839,56.4733577677</coordinates>
+						</Point>
+					</Placemark>
+				</Folder>
+
+				<GroundOverlay id="SVG" >
+					<name>SVG</name>
+					<Icon>
+						<href>files/Canvas 1 Bane 2.SVG</href>
+					</Icon>
+					<gx:LatLonQuad>
+						<coordinates>
+							9.3521002853,56.4702203044 9.3863367145,56.4701185073 9.3864749939,56.4837293325 9.3522263113,56.4838311818
+						</coordinates>
+					</gx:LatLonQuad>
+					<LatLonBox>
+						<north>56.4837815379</north>
+						<south>56.4701704978</south>
+						<east>9.3864060989</east>
+						<west>9.3521614572</west>
+						<rotation>-0.3072956085</rotation>
+					</LatLonBox>
+				</GroundOverlay>
+
+			</Folder>
+
+			<Folder>
+				<name>Bane 3</name>
+
+				<Folder>
+					<name>Coordinates</name>
+
+					<Placemark id="S" >
+						<name>(S)</name>
+						<ExtendedData>
+							<Data name="cs:object-type" >
+								<value>Start</value>
+							</Data>
+							<Data name="cs:control-code" >
+								<value>S</value>
+							</Data>
+						</ExtendedData>
+
+						<Point>
+							<coordinates>9.3844593086,56.4737108801</coordinates>
+						</Point>
+					</Placemark>
+					<Placemark id="101" >
+						<name>1 (101)</name>
+						<ExtendedData>
+							<Data name="cs:object-type" >
+								<value>Control</value>
+							</Data>
+							<Data name="cs:control-code" >
+								<value>101</value>
+							</Data>
+						</ExtendedData>
+
+						<Point>
+							<coordinates>9.3813889485,56.4749395211</coordinates>
+						</Point>
+					</Placemark>
+					<Placemark id="102" >
+						<name>2 (102)</name>
+						<ExtendedData>
+							<Data name="cs:object-type" >
+								<value>Control</value>
+							</Data>
+							<Data name="cs:control-code" >
+								<value>102</value>
+							</Data>
+						</ExtendedData>
+
+						<Point>
+							<coordinates>9.3835634283,56.4755006335</coordinates>
+						</Point>
+					</Placemark>
+					<Placemark id="103" >
+						<name>3 (103)</name>
+						<ExtendedData>
+							<Data name="cs:object-type" >
+								<value>Control</value>
+							</Data>
+							<Data name="cs:control-code" >
+								<value>103</value>
+							</Data>
+						</ExtendedData>
+
+						<Point>
+							<coordinates>9.3829267176,56.4767568104</coordinates>
+						</Point>
+					</Placemark>
+					<Placemark id="104" >
+						<name>4 (104)</name>
+						<ExtendedData>
+							<Data name="cs:object-type" >
+								<value>Control</value>
+							</Data>
+							<Data name="cs:control-code" >
+								<value>104</value>
+							</Data>
+						</ExtendedData>
+
+						<Point>
+							<coordinates>9.3813830599,56.4772664797</coordinates>
+						</Point>
+					</Placemark>
+					<Placemark id="105" >
+						<name>5 (105)</name>
+						<ExtendedData>
+							<Data name="cs:object-type" >
+								<value>Control</value>
+							</Data>
+							<Data name="cs:control-code" >
+								<value>105</value>
+							</Data>
+						</ExtendedData>
+
+						<Point>
+							<coordinates>9.3767125569,56.4756491818</coordinates>
+						</Point>
+					</Placemark>
+					<Placemark id="123" >
+						<name>6 (123)</name>
+						<ExtendedData>
+							<Data name="cs:object-type" >
+								<value>Control</value>
+							</Data>
+							<Data name="cs:control-code" >
+								<value>123</value>
+							</Data>
+						</ExtendedData>
+
+						<Point>
+							<coordinates>9.3740976819,56.4761871614</coordinates>
+						</Point>
+					</Placemark>
+					<Placemark id="124" >
+						<name>7 (124)</name>
+						<ExtendedData>
+							<Data name="cs:object-type" >
+								<value>Control</value>
+							</Data>
+							<Data name="cs:control-code" >
+								<value>124</value>
+							</Data>
+						</ExtendedData>
+
+						<Point>
+							<coordinates>9.3705499588,56.4776307970</coordinates>
+						</Point>
+					</Placemark>
+					<Placemark id="126" >
+						<name>8 (126)</name>
+						<ExtendedData>
+							<Data name="cs:object-type" >
+								<value>Control</value>
+							</Data>
+							<Data name="cs:control-code" >
+								<value>126</value>
+							</Data>
+						</ExtendedData>
+
+						<Point>
+							<coordinates>9.3681626406,56.4767098170</coordinates>
+						</Point>
+					</Placemark>
+					<Placemark id="117" >
+						<name>9 (117)</name>
+						<ExtendedData>
+							<Data name="cs:object-type" >
+								<value>Control</value>
+							</Data>
+							<Data name="cs:control-code" >
+								<value>117</value>
+							</Data>
+						</ExtendedData>
+
+						<Point>
+							<coordinates>9.3675812711,56.4751797124</coordinates>
+						</Point>
+					</Placemark>
+					<Placemark id="125" >
+						<name>10 (125)</name>
+						<ExtendedData>
+							<Data name="cs:object-type" >
+								<value>Control</value>
+							</Data>
+							<Data name="cs:control-code" >
+								<value>125</value>
+							</Data>
+						</ExtendedData>
+
+						<Point>
+							<coordinates>9.3667004597,56.4740718542</coordinates>
+						</Point>
+					</Placemark>
+					<Placemark id="118" >
+						<name>11 (118)</name>
+						<ExtendedData>
+							<Data name="cs:object-type" >
+								<value>Control</value>
+							</Data>
+							<Data name="cs:control-code" >
+								<value>118</value>
+							</Data>
+						</ExtendedData>
+
+						<Point>
+							<coordinates>9.3707934465,56.4734640398</coordinates>
+						</Point>
+					</Placemark>
+					<Placemark id="119" >
+						<name>12 (119)</name>
+						<ExtendedData>
+							<Data name="cs:object-type" >
+								<value>Control</value>
+							</Data>
+							<Data name="cs:control-code" >
+								<value>119</value>
+							</Data>
+						</ExtendedData>
+
+						<Point>
+							<coordinates>9.3773141637,56.4741083403</coordinates>
+						</Point>
+					</Placemark>
+					<Placemark id="120" >
+						<name>13 (120)</name>
+						<ExtendedData>
+							<Data name="cs:object-type" >
+								<value>Control</value>
+							</Data>
+							<Data name="cs:control-code" >
+								<value>120</value>
+							</Data>
+						</ExtendedData>
+
+						<Point>
+							<coordinates>9.3801463221,56.4727529518</coordinates>
+						</Point>
+					</Placemark>
+					<Placemark id="M" >
+						<name>(M)</name>
+						<ExtendedData>
+							<Data name="cs:object-type" >
+								<value>Finish</value>
+							</Data>
+							<Data name="cs:control-code" >
+								<value>M</value>
+							</Data>
+						</ExtendedData>
+
+						<Point>
+							<coordinates>9.3838875839,56.4733577677</coordinates>
+						</Point>
+					</Placemark>
+				</Folder>
+
+				<GroundOverlay id="SVG" >
+					<name>SVG</name>
+					<Icon>
+						<href>files/Canvas 1 Bane 3.SVG</href>
+					</Icon>
+					<gx:LatLonQuad>
+						<coordinates>
+							9.3521002853,56.4702203044 9.3863367145,56.4701185073 9.3864749939,56.4837293325 9.3522263113,56.4838311818
+						</coordinates>
+					</gx:LatLonQuad>
+					<LatLonBox>
+						<north>56.4837815379</north>
+						<south>56.4701704978</south>
+						<east>9.3864060989</east>
+						<west>9.3521614572</west>
+						<rotation>-0.3072956085</rotation>
+					</LatLonBox>
+				</GroundOverlay>
+
+			</Folder>
+
+			<Folder>
+				<name>Bane 4</name>
+
+				<Folder>
+					<name>Coordinates</name>
+
+					<Placemark id="S" >
+						<name>(S)</name>
+						<ExtendedData>
+							<Data name="cs:object-type" >
+								<value>Start</value>
+							</Data>
+							<Data name="cs:control-code" >
+								<value>S</value>
+							</Data>
+						</ExtendedData>
+
+						<Point>
+							<coordinates>9.3844593086,56.4737108801</coordinates>
+						</Point>
+					</Placemark>
+					<Placemark id="102" >
+						<name>1 (102)</name>
+						<ExtendedData>
+							<Data name="cs:object-type" >
+								<value>Control</value>
+							</Data>
+							<Data name="cs:control-code" >
+								<value>102</value>
+							</Data>
+						</ExtendedData>
+
+						<Point>
+							<coordinates>9.3835634283,56.4755006335</coordinates>
+						</Point>
+					</Placemark>
+					<Placemark id="104" >
+						<name>2 (104)</name>
+						<ExtendedData>
+							<Data name="cs:object-type" >
+								<value>Control</value>
+							</Data>
+							<Data name="cs:control-code" >
+								<value>104</value>
+							</Data>
+						</ExtendedData>
+
+						<Point>
+							<coordinates>9.3813830599,56.4772664797</coordinates>
+						</Point>
+					</Placemark>
+					<Placemark id="106" >
+						<name>3 (106)</name>
+						<ExtendedData>
+							<Data name="cs:object-type" >
+								<value>Control</value>
+							</Data>
+							<Data name="cs:control-code" >
+								<value>106</value>
+							</Data>
+						</ExtendedData>
+
+						<Point>
+							<coordinates>9.3764700513,56.4783748623</coordinates>
+						</Point>
+					</Placemark>
+					<Placemark id="107" >
+						<name>4 (107)</name>
+						<ExtendedData>
+							<Data name="cs:object-type" >
+								<value>Control</value>
+							</Data>
+							<Data name="cs:control-code" >
+								<value>107</value>
+							</Data>
+						</ExtendedData>
+
+						<Point>
+							<coordinates>9.3762512816,56.4807132451</coordinates>
+						</Point>
+					</Placemark>
+					<Placemark id="108" >
+						<name>5 (108)</name>
+						<ExtendedData>
+							<Data name="cs:object-type" >
+								<value>Control</value>
+							</Data>
+							<Data name="cs:control-code" >
+								<value>108</value>
+							</Data>
+						</ExtendedData>
+
+						<Point>
+							<coordinates>9.3748276664,56.4818962920</coordinates>
+						</Point>
+					</Placemark>
+					<Placemark id="127" >
+						<name>6 (127)</name>
+						<ExtendedData>
+							<Data name="cs:object-type" >
+								<value>Control</value>
+							</Data>
+							<Data name="cs:control-code" >
+								<value>127</value>
+							</Data>
+						</ExtendedData>
+
+						<Point>
+							<coordinates>9.3739699537,56.4803679502</coordinates>
+						</Point>
+					</Placemark>
+					<Placemark id="111" >
+						<name>7 (111)</name>
+						<ExtendedData>
+							<Data name="cs:object-type" >
+								<value>Control</value>
+							</Data>
+							<Data name="cs:control-code" >
+								<value>111</value>
+							</Data>
+						</ExtendedData>
+
+						<Point>
+							<coordinates>9.3666248587,56.4803754754</coordinates>
+						</Point>
+					</Placemark>
+					<Placemark id="114" >
+						<name>8 (114)</name>
+						<ExtendedData>
+							<Data name="cs:object-type" >
+								<value>Control</value>
+							</Data>
+							<Data name="cs:control-code" >
+								<value>114</value>
+							</Data>
+						</ExtendedData>
+
+						<Point>
+							<coordinates>9.3651006075,56.4790547793</coordinates>
+						</Point>
+					</Placemark>
+					<Placemark id="121" >
+						<name>9 (121)</name>
+						<ExtendedData>
+							<Data name="cs:object-type" >
+								<value>Control</value>
+							</Data>
+							<Data name="cs:control-code" >
+								<value>121</value>
+							</Data>
+						</ExtendedData>
+
+						<Point>
+							<coordinates>9.3678302373,56.4780943871</coordinates>
+						</Point>
+					</Placemark>
+					<Placemark id="117" >
+						<name>10 (117)</name>
+						<ExtendedData>
+							<Data name="cs:object-type" >
+								<value>Control</value>
+							</Data>
+							<Data name="cs:control-code" >
+								<value>117</value>
+							</Data>
+						</ExtendedData>
+
+						<Point>
+							<coordinates>9.3675812711,56.4751797124</coordinates>
+						</Point>
+					</Placemark>
+					<Placemark id="125" >
+						<name>11 (125)</name>
+						<ExtendedData>
+							<Data name="cs:object-type" >
+								<value>Control</value>
+							</Data>
+							<Data name="cs:control-code" >
+								<value>125</value>
+							</Data>
+						</ExtendedData>
+
+						<Point>
+							<coordinates>9.3667004597,56.4740718542</coordinates>
+						</Point>
+					</Placemark>
+					<Placemark id="118" >
+						<name>12 (118)</name>
+						<ExtendedData>
+							<Data name="cs:object-type" >
+								<value>Control</value>
+							</Data>
+							<Data name="cs:control-code" >
+								<value>118</value>
+							</Data>
+						</ExtendedData>
+
+						<Point>
+							<coordinates>9.3707934465,56.4734640398</coordinates>
+						</Point>
+					</Placemark>
+					<Placemark id="119" >
+						<name>13 (119)</name>
+						<ExtendedData>
+							<Data name="cs:object-type" >
+								<value>Control</value>
+							</Data>
+							<Data name="cs:control-code" >
+								<value>119</value>
+							</Data>
+						</ExtendedData>
+
+						<Point>
+							<coordinates>9.3773141637,56.4741083403</coordinates>
+						</Point>
+					</Placemark>
+					<Placemark id="120" >
+						<name>14 (120)</name>
+						<ExtendedData>
+							<Data name="cs:object-type" >
+								<value>Control</value>
+							</Data>
+							<Data name="cs:control-code" >
+								<value>120</value>
+							</Data>
+						</ExtendedData>
+
+						<Point>
+							<coordinates>9.3801463221,56.4727529518</coordinates>
+						</Point>
+					</Placemark>
+					<Placemark id="M" >
+						<name>(M)</name>
+						<ExtendedData>
+							<Data name="cs:object-type" >
+								<value>Finish</value>
+							</Data>
+							<Data name="cs:control-code" >
+								<value>M</value>
+							</Data>
+						</ExtendedData>
+
+						<Point>
+							<coordinates>9.3838875839,56.4733577677</coordinates>
+						</Point>
+					</Placemark>
+				</Folder>
+
+				<GroundOverlay id="SVG" >
+					<name>SVG</name>
+					<Icon>
+						<href>files/Canvas 1 Bane 4.SVG</href>
+					</Icon>
+					<gx:LatLonQuad>
+						<coordinates>
+							9.3521002853,56.4702203044 9.3863367145,56.4701185073 9.3864749939,56.4837293325 9.3522263113,56.4838311818
+						</coordinates>
+					</gx:LatLonQuad>
+					<LatLonBox>
+						<north>56.4837815379</north>
+						<south>56.4701704978</south>
+						<east>9.3864060989</east>
+						<west>9.3521614572</west>
+						<rotation>-0.3072956085</rotation>
+					</LatLonBox>
+				</GroundOverlay>
+
+			</Folder>
+
+		</Folder>
+
+		<Folder>
+			<name>Canvas 2  (1:7.500)</name>
+
+			<GroundOverlay id="Canvas 2 Map" >
+				<name>Canvas 2 Map</name>
+				<Icon>
+					<href>files/Canvas 2 Map.jpg</href>
+				</Icon>
+				<gx:LatLonQuad>
+					<coordinates>
+						9.3521181147,56.4702175585 9.3863545414,56.4701157566 9.3864928271,56.4837265817 9.3522441470,56.4838284359
+					</coordinates>
+				</gx:LatLonQuad>
+				<LatLonBox>
+					<north>56.4837787896</north>
+					<south>56.4701677495</south>
+					<east>9.3864239290</east>
+					<west>9.3521792898</west>
+					<rotation>-0.3073104369</rotation>
+				</LatLonBox>
+			</GroundOverlay>
+
+			<Folder>
+				<name>Bane 1 - Kompaskorridor</name>
+
+				<Folder>
+					<name>Coordinates</name>
+
+					<Placemark id="S" >
+						<name>(S)</name>
+						<ExtendedData>
+							<Data name="cs:object-type" >
+								<value>Start</value>
+							</Data>
+							<Data name="cs:control-code" >
+								<value>S</value>
+							</Data>
+						</ExtendedData>
+
+						<Point>
+							<coordinates>9.3844771372,56.4737081296</coordinates>
+						</Point>
+					</Placemark>
+					<Placemark id="101" >
+						<name>1 (101)</name>
+						<ExtendedData>
+							<Data name="cs:object-type" >
+								<value>Control</value>
+							</Data>
+							<Data name="cs:control-code" >
+								<value>101</value>
+							</Data>
+						</ExtendedData>
+
+						<Point>
+							<coordinates>9.3814067780,56.4749367711</coordinates>
+						</Point>
+					</Placemark>
+					<Placemark id="102" >
+						<name>2 (102)</name>
+						<ExtendedData>
+							<Data name="cs:object-type" >
+								<value>Control</value>
+							</Data>
+							<Data name="cs:control-code" >
+								<value>102</value>
+							</Data>
+						</ExtendedData>
+
+						<Point>
+							<coordinates>9.3835812579,56.4754978831</coordinates>
+						</Point>
+					</Placemark>
+					<Placemark id="103" >
+						<name>3 (103)</name>
+						<ExtendedData>
+							<Data name="cs:object-type" >
+								<value>Control</value>
+							</Data>
+							<Data name="cs:control-code" >
+								<value>103</value>
+							</Data>
+						</ExtendedData>
+
+						<Point>
+							<coordinates>9.3829445478,56.4767540602</coordinates>
+						</Point>
+					</Placemark>
+					<Placemark id="104" >
+						<name>4 (104)</name>
+						<ExtendedData>
+							<Data name="cs:object-type" >
+								<value>Control</value>
+							</Data>
+							<Data name="cs:control-code" >
+								<value>104</value>
+							</Data>
+						</ExtendedData>
+
+						<Point>
+							<coordinates>9.3814008904,56.4772637296</coordinates>
+						</Point>
+					</Placemark>
+					<Placemark id="105" >
+						<name>5 (105)</name>
+						<ExtendedData>
+							<Data name="cs:object-type" >
+								<value>Control</value>
+							</Data>
+							<Data name="cs:control-code" >
+								<value>105</value>
+							</Data>
+						</ExtendedData>
+
+						<Point>
+							<coordinates>9.3767303871,56.4756464324</coordinates>
+						</Point>
+					</Placemark>
+					<Placemark id="106" >
+						<name>6 (106)</name>
+						<ExtendedData>
+							<Data name="cs:object-type" >
+								<value>Control</value>
+							</Data>
+							<Data name="cs:control-code" >
+								<value>106</value>
+							</Data>
+						</ExtendedData>
+
+						<Point>
+							<coordinates>9.3764878828,56.4783721129</coordinates>
+						</Point>
+					</Placemark>
+					<Placemark id="107" >
+						<name>7 (107)</name>
+						<ExtendedData>
+							<Data name="cs:object-type" >
+								<value>Control</value>
+							</Data>
+							<Data name="cs:control-code" >
+								<value>107</value>
+							</Data>
+						</ExtendedData>
+
+						<Point>
+							<coordinates>9.3762691141,56.4807104958</coordinates>
+						</Point>
+					</Placemark>
+					<Placemark id="108" >
+						<name>8 (108)</name>
+						<ExtendedData>
+							<Data name="cs:object-type" >
+								<value>Control</value>
+							</Data>
+							<Data name="cs:control-code" >
+								<value>108</value>
+							</Data>
+						</ExtendedData>
+
+						<Point>
+							<coordinates>9.3748454996,56.4818935429</coordinates>
+						</Point>
+					</Placemark>
+					<Placemark id="109" >
+						<name>9 (109)</name>
+						<ExtendedData>
+							<Data name="cs:object-type" >
+								<value>Control</value>
+							</Data>
+							<Data name="cs:control-code" >
+								<value>109</value>
+							</Data>
+						</ExtendedData>
+
+						<Point>
+							<coordinates>9.3732807639,56.4804535777</coordinates>
+						</Point>
+					</Placemark>
+					<Placemark id="110" >
+						<name>10 (110)</name>
+						<ExtendedData>
+							<Data name="cs:object-type" >
+								<value>Control</value>
+							</Data>
+							<Data name="cs:control-code" >
+								<value>110</value>
+							</Data>
+						</ExtendedData>
+
+						<Point>
+							<coordinates>9.3696558709,56.4791805611</coordinates>
+						</Point>
+					</Placemark>
+					<Placemark id="111" >
+						<name>11 (111)</name>
+						<ExtendedData>
+							<Data name="cs:object-type" >
+								<value>Control</value>
+							</Data>
+							<Data name="cs:control-code" >
+								<value>111</value>
+							</Data>
+						</ExtendedData>
+
+						<Point>
+							<coordinates>9.3666426918,56.4803727275</coordinates>
+						</Point>
+					</Placemark>
+					<Placemark id="112" >
+						<name>12 (112)</name>
+						<ExtendedData>
+							<Data name="cs:object-type" >
+								<value>Control</value>
+							</Data>
+							<Data name="cs:control-code" >
+								<value>112</value>
+							</Data>
+						</ExtendedData>
+
+						<Point>
+							<coordinates>9.3669169190,56.4818705010</coordinates>
+						</Point>
+					</Placemark>
+					<Placemark id="113" >
+						<name>13 (113)</name>
+						<ExtendedData>
+							<Data name="cs:object-type" >
+								<value>Control</value>
+							</Data>
+							<Data name="cs:control-code" >
+								<value>113</value>
+							</Data>
+						</ExtendedData>
+
+						<Point>
+							<coordinates>9.3621531696,56.4803445723</coordinates>
+						</Point>
+					</Placemark>
+					<Placemark id="114" >
+						<name>14 (114)</name>
+						<ExtendedData>
+							<Data name="cs:object-type" >
+								<value>Control</value>
+							</Data>
+							<Data name="cs:control-code" >
+								<value>114</value>
+							</Data>
+						</ExtendedData>
+
+						<Point>
+							<coordinates>9.3651184401,56.4790520316</coordinates>
+						</Point>
+					</Placemark>
+					<Placemark id="115" >
+						<name>15 (115)</name>
+						<ExtendedData>
+							<Data name="cs:object-type" >
+								<value>Control</value>
+							</Data>
+							<Data name="cs:control-code" >
+								<value>115</value>
+							</Data>
+						</ExtendedData>
+
+						<Point>
+							<coordinates>9.3625648514,56.4780559647</coordinates>
+						</Point>
+					</Placemark>
+					<Placemark id="116" >
+						<name>16 (116)</name>
+						<ExtendedData>
+							<Data name="cs:object-type" >
+								<value>Control</value>
+							</Data>
+							<Data name="cs:control-code" >
+								<value>116</value>
+							</Data>
+						</ExtendedData>
+
+						<Point>
+							<coordinates>9.3626903363,56.4757223710</coordinates>
+						</Point>
+					</Placemark>
+					<Placemark id="117" >
+						<name>17 (117)</name>
+						<ExtendedData>
+							<Data name="cs:object-type" >
+								<value>Control</value>
+							</Data>
+							<Data name="cs:control-code" >
+								<value>117</value>
+							</Data>
+						</ExtendedData>
+
+						<Point>
+							<coordinates>9.3675991017,56.4751769644</coordinates>
+						</Point>
+					</Placemark>
+					<Placemark id="125" >
+						<name>18 (125)</name>
+						<ExtendedData>
+							<Data name="cs:object-type" >
+								<value>Control</value>
+							</Data>
+							<Data name="cs:control-code" >
+								<value>125</value>
+							</Data>
+						</ExtendedData>
+
+						<Point>
+							<coordinates>9.3667182898,56.4740691063</coordinates>
+						</Point>
+					</Placemark>
+					<Placemark id="118" >
+						<name>19 (118)</name>
+						<ExtendedData>
+							<Data name="cs:object-type" >
+								<value>Control</value>
+							</Data>
+							<Data name="cs:control-code" >
+								<value>118</value>
+							</Data>
+						</ExtendedData>
+
+						<Point>
+							<coordinates>9.3708112760,56.4734612913</coordinates>
+						</Point>
+					</Placemark>
+					<Placemark id="119" >
+						<name>20 (119)</name>
+						<ExtendedData>
+							<Data name="cs:object-type" >
+								<value>Control</value>
+							</Data>
+							<Data name="cs:control-code" >
+								<value>119</value>
+							</Data>
+						</ExtendedData>
+
+						<Point>
+							<coordinates>9.3773319931,56.4741055908</coordinates>
+						</Point>
+					</Placemark>
+					<Placemark id="120" >
+						<name>21 (120)</name>
+						<ExtendedData>
+							<Data name="cs:object-type" >
+								<value>Control</value>
+							</Data>
+							<Data name="cs:control-code" >
+								<value>120</value>
+							</Data>
+						</ExtendedData>
+
+						<Point>
+							<coordinates>9.3801641507,56.4727502019</coordinates>
+						</Point>
+					</Placemark>
+					<Placemark id="M" >
+						<name>(M)</name>
+						<ExtendedData>
+							<Data name="cs:object-type" >
+								<value>Finish</value>
+							</Data>
+							<Data name="cs:control-code" >
+								<value>M</value>
+							</Data>
+						</ExtendedData>
+
+						<Point>
+							<coordinates>9.3839054125,56.4733550173</coordinates>
+						</Point>
+					</Placemark>
+				</Folder>
+
+				<GroundOverlay id="SVG" >
+					<name>SVG</name>
+					<Icon>
+						<href>files/Canvas 2 Bane 1 - Kompaskorridor.SVG</href>
+					</Icon>
+					<gx:LatLonQuad>
+						<coordinates>
+							9.3521181147,56.4702175585 9.3863545414,56.4701157566 9.3864928271,56.4837265817 9.3522441470,56.4838284359
+						</coordinates>
+					</gx:LatLonQuad>
+					<LatLonBox>
+						<north>56.4837787896</north>
+						<south>56.4701677495</south>
+						<east>9.3864239290</east>
+						<west>9.3521792898</west>
+						<rotation>-0.3073104369</rotation>
+					</LatLonBox>
+				</GroundOverlay>
+
+			</Folder>
+
+			<Folder>
+				<name>Bane 2 - Kompaskorridor</name>
+
+				<Folder>
+					<name>Coordinates</name>
+
+					<Placemark id="S" >
+						<name>(S)</name>
+						<ExtendedData>
+							<Data name="cs:object-type" >
+								<value>Start</value>
+							</Data>
+							<Data name="cs:control-code" >
+								<value>S</value>
+							</Data>
+						</ExtendedData>
+
+						<Point>
+							<coordinates>9.3844771372,56.4737081296</coordinates>
+						</Point>
+					</Placemark>
+					<Placemark id="101" >
+						<name>1 (101)</name>
+						<ExtendedData>
+							<Data name="cs:object-type" >
+								<value>Control</value>
+							</Data>
+							<Data name="cs:control-code" >
+								<value>101</value>
+							</Data>
+						</ExtendedData>
+
+						<Point>
+							<coordinates>9.3814067780,56.4749367711</coordinates>
+						</Point>
+					</Placemark>
+					<Placemark id="102" >
+						<name>2 (102)</name>
+						<ExtendedData>
+							<Data name="cs:object-type" >
+								<value>Control</value>
+							</Data>
+							<Data name="cs:control-code" >
+								<value>102</value>
+							</Data>
+						</ExtendedData>
+
+						<Point>
+							<coordinates>9.3835812579,56.4754978831</coordinates>
+						</Point>
+					</Placemark>
+					<Placemark id="103" >
+						<name>3 (103)</name>
+						<ExtendedData>
+							<Data name="cs:object-type" >
+								<value>Control</value>
+							</Data>
+							<Data name="cs:control-code" >
+								<value>103</value>
+							</Data>
+						</ExtendedData>
+
+						<Point>
+							<coordinates>9.3829445478,56.4767540602</coordinates>
+						</Point>
+					</Placemark>
+					<Placemark id="104" >
+						<name>4 (104)</name>
+						<ExtendedData>
+							<Data name="cs:object-type" >
+								<value>Control</value>
+							</Data>
+							<Data name="cs:control-code" >
+								<value>104</value>
+							</Data>
+						</ExtendedData>
+
+						<Point>
+							<coordinates>9.3814008904,56.4772637296</coordinates>
+						</Point>
+					</Placemark>
+					<Placemark id="105" >
+						<name>5 (105)</name>
+						<ExtendedData>
+							<Data name="cs:object-type" >
+								<value>Control</value>
+							</Data>
+							<Data name="cs:control-code" >
+								<value>105</value>
+							</Data>
+						</ExtendedData>
+
+						<Point>
+							<coordinates>9.3767303871,56.4756464324</coordinates>
+						</Point>
+					</Placemark>
+					<Placemark id="106" >
+						<name>6 (106)</name>
+						<ExtendedData>
+							<Data name="cs:object-type" >
+								<value>Control</value>
+							</Data>
+							<Data name="cs:control-code" >
+								<value>106</value>
+							</Data>
+						</ExtendedData>
+
+						<Point>
+							<coordinates>9.3764878828,56.4783721129</coordinates>
+						</Point>
+					</Placemark>
+					<Placemark id="107" >
+						<name>7 (107)</name>
+						<ExtendedData>
+							<Data name="cs:object-type" >
+								<value>Control</value>
+							</Data>
+							<Data name="cs:control-code" >
+								<value>107</value>
+							</Data>
+						</ExtendedData>
+
+						<Point>
+							<coordinates>9.3762691141,56.4807104958</coordinates>
+						</Point>
+					</Placemark>
+					<Placemark id="108" >
+						<name>8 (108)</name>
+						<ExtendedData>
+							<Data name="cs:object-type" >
+								<value>Control</value>
+							</Data>
+							<Data name="cs:control-code" >
+								<value>108</value>
+							</Data>
+						</ExtendedData>
+
+						<Point>
+							<coordinates>9.3748454996,56.4818935429</coordinates>
+						</Point>
+					</Placemark>
+					<Placemark id="109" >
+						<name>9 (109)</name>
+						<ExtendedData>
+							<Data name="cs:object-type" >
+								<value>Control</value>
+							</Data>
+							<Data name="cs:control-code" >
+								<value>109</value>
+							</Data>
+						</ExtendedData>
+
+						<Point>
+							<coordinates>9.3732807639,56.4804535777</coordinates>
+						</Point>
+					</Placemark>
+					<Placemark id="110" >
+						<name>10 (110)</name>
+						<ExtendedData>
+							<Data name="cs:object-type" >
+								<value>Control</value>
+							</Data>
+							<Data name="cs:control-code" >
+								<value>110</value>
+							</Data>
+						</ExtendedData>
+
+						<Point>
+							<coordinates>9.3696558709,56.4791805611</coordinates>
+						</Point>
+					</Placemark>
+					<Placemark id="121" >
+						<name>11 (121)</name>
+						<ExtendedData>
+							<Data name="cs:object-type" >
+								<value>Control</value>
+							</Data>
+							<Data name="cs:control-code" >
+								<value>121</value>
+							</Data>
+						</ExtendedData>
+
+						<Point>
+							<coordinates>9.3678480693,56.4780916390</coordinates>
+						</Point>
+					</Placemark>
+					<Placemark id="126" >
+						<name>12 (126)</name>
+						<ExtendedData>
+							<Data name="cs:object-type" >
+								<value>Control</value>
+							</Data>
+							<Data name="cs:control-code" >
+								<value>126</value>
+							</Data>
+						</ExtendedData>
+
+						<Point>
+							<coordinates>9.3681804718,56.4767070689</coordinates>
+						</Point>
+					</Placemark>
+					<Placemark id="117" >
+						<name>13 (117)</name>
+						<ExtendedData>
+							<Data name="cs:object-type" >
+								<value>Control</value>
+							</Data>
+							<Data name="cs:control-code" >
+								<value>117</value>
+							</Data>
+						</ExtendedData>
+
+						<Point>
+							<coordinates>9.3675991017,56.4751769644</coordinates>
+						</Point>
+					</Placemark>
+					<Placemark id="125" >
+						<name>14 (125)</name>
+						<ExtendedData>
+							<Data name="cs:object-type" >
+								<value>Control</value>
+							</Data>
+							<Data name="cs:control-code" >
+								<value>125</value>
+							</Data>
+						</ExtendedData>
+
+						<Point>
+							<coordinates>9.3667182898,56.4740691063</coordinates>
+						</Point>
+					</Placemark>
+					<Placemark id="118" >
+						<name>15 (118)</name>
+						<ExtendedData>
+							<Data name="cs:object-type" >
+								<value>Control</value>
+							</Data>
+							<Data name="cs:control-code" >
+								<value>118</value>
+							</Data>
+						</ExtendedData>
+
+						<Point>
+							<coordinates>9.3708112760,56.4734612913</coordinates>
+						</Point>
+					</Placemark>
+					<Placemark id="119" >
+						<name>16 (119)</name>
+						<ExtendedData>
+							<Data name="cs:object-type" >
+								<value>Control</value>
+							</Data>
+							<Data name="cs:control-code" >
+								<value>119</value>
+							</Data>
+						</ExtendedData>
+
+						<Point>
+							<coordinates>9.3773319931,56.4741055908</coordinates>
+						</Point>
+					</Placemark>
+					<Placemark id="120" >
+						<name>17 (120)</name>
+						<ExtendedData>
+							<Data name="cs:object-type" >
+								<value>Control</value>
+							</Data>
+							<Data name="cs:control-code" >
+								<value>120</value>
+							</Data>
+						</ExtendedData>
+
+						<Point>
+							<coordinates>9.3801641507,56.4727502019</coordinates>
+						</Point>
+					</Placemark>
+					<Placemark id="M" >
+						<name>(M)</name>
+						<ExtendedData>
+							<Data name="cs:object-type" >
+								<value>Finish</value>
+							</Data>
+							<Data name="cs:control-code" >
+								<value>M</value>
+							</Data>
+						</ExtendedData>
+
+						<Point>
+							<coordinates>9.3839054125,56.4733550173</coordinates>
+						</Point>
+					</Placemark>
+				</Folder>
+
+				<GroundOverlay id="SVG" >
+					<name>SVG</name>
+					<Icon>
+						<href>files/Canvas 2 Bane 2 - Kompaskorridor.SVG</href>
+					</Icon>
+					<gx:LatLonQuad>
+						<coordinates>
+							9.3521181147,56.4702175585 9.3863545414,56.4701157566 9.3864928271,56.4837265817 9.3522441470,56.4838284359
+						</coordinates>
+					</gx:LatLonQuad>
+					<LatLonBox>
+						<north>56.4837787896</north>
+						<south>56.4701677495</south>
+						<east>9.3864239290</east>
+						<west>9.3521792898</west>
+						<rotation>-0.3073104369</rotation>
+					</LatLonBox>
+				</GroundOverlay>
+
+			</Folder>
+
+			<Folder>
+				<name>Bane 3 - Kompaskorridor</name>
+
+				<Folder>
+					<name>Coordinates</name>
+
+					<Placemark id="S" >
+						<name>(S)</name>
+						<ExtendedData>
+							<Data name="cs:object-type" >
+								<value>Start</value>
+							</Data>
+							<Data name="cs:control-code" >
+								<value>S</value>
+							</Data>
+						</ExtendedData>
+
+						<Point>
+							<coordinates>9.3844771372,56.4737081296</coordinates>
+						</Point>
+					</Placemark>
+					<Placemark id="101" >
+						<name>1 (101)</name>
+						<ExtendedData>
+							<Data name="cs:object-type" >
+								<value>Control</value>
+							</Data>
+							<Data name="cs:control-code" >
+								<value>101</value>
+							</Data>
+						</ExtendedData>
+
+						<Point>
+							<coordinates>9.3814067780,56.4749367711</coordinates>
+						</Point>
+					</Placemark>
+					<Placemark id="102" >
+						<name>2 (102)</name>
+						<ExtendedData>
+							<Data name="cs:object-type" >
+								<value>Control</value>
+							</Data>
+							<Data name="cs:control-code" >
+								<value>102</value>
+							</Data>
+						</ExtendedData>
+
+						<Point>
+							<coordinates>9.3835812579,56.4754978831</coordinates>
+						</Point>
+					</Placemark>
+					<Placemark id="103" >
+						<name>3 (103)</name>
+						<ExtendedData>
+							<Data name="cs:object-type" >
+								<value>Control</value>
+							</Data>
+							<Data name="cs:control-code" >
+								<value>103</value>
+							</Data>
+						</ExtendedData>
+
+						<Point>
+							<coordinates>9.3829445478,56.4767540602</coordinates>
+						</Point>
+					</Placemark>
+					<Placemark id="104" >
+						<name>4 (104)</name>
+						<ExtendedData>
+							<Data name="cs:object-type" >
+								<value>Control</value>
+							</Data>
+							<Data name="cs:control-code" >
+								<value>104</value>
+							</Data>
+						</ExtendedData>
+
+						<Point>
+							<coordinates>9.3814008904,56.4772637296</coordinates>
+						</Point>
+					</Placemark>
+					<Placemark id="105" >
+						<name>5 (105)</name>
+						<ExtendedData>
+							<Data name="cs:object-type" >
+								<value>Control</value>
+							</Data>
+							<Data name="cs:control-code" >
+								<value>105</value>
+							</Data>
+						</ExtendedData>
+
+						<Point>
+							<coordinates>9.3767303871,56.4756464324</coordinates>
+						</Point>
+					</Placemark>
+					<Placemark id="123" >
+						<name>6 (123)</name>
+						<ExtendedData>
+							<Data name="cs:object-type" >
+								<value>Control</value>
+							</Data>
+							<Data name="cs:control-code" >
+								<value>123</value>
+							</Data>
+						</ExtendedData>
+
+						<Point>
+							<coordinates>9.3741155125,56.4761844124</coordinates>
+						</Point>
+					</Placemark>
+					<Placemark id="124" >
+						<name>7 (124)</name>
+						<ExtendedData>
+							<Data name="cs:object-type" >
+								<value>Control</value>
+							</Data>
+							<Data name="cs:control-code" >
+								<value>124</value>
+							</Data>
+						</ExtendedData>
+
+						<Point>
+							<coordinates>9.3705677903,56.4776280485</coordinates>
+						</Point>
+					</Placemark>
+					<Placemark id="126" >
+						<name>8 (126)</name>
+						<ExtendedData>
+							<Data name="cs:object-type" >
+								<value>Control</value>
+							</Data>
+							<Data name="cs:control-code" >
+								<value>126</value>
+							</Data>
+						</ExtendedData>
+
+						<Point>
+							<coordinates>9.3681804718,56.4767070689</coordinates>
+						</Point>
+					</Placemark>
+					<Placemark id="117" >
+						<name>9 (117)</name>
+						<ExtendedData>
+							<Data name="cs:object-type" >
+								<value>Control</value>
+							</Data>
+							<Data name="cs:control-code" >
+								<value>117</value>
+							</Data>
+						</ExtendedData>
+
+						<Point>
+							<coordinates>9.3675991017,56.4751769644</coordinates>
+						</Point>
+					</Placemark>
+					<Placemark id="125" >
+						<name>10 (125)</name>
+						<ExtendedData>
+							<Data name="cs:object-type" >
+								<value>Control</value>
+							</Data>
+							<Data name="cs:control-code" >
+								<value>125</value>
+							</Data>
+						</ExtendedData>
+
+						<Point>
+							<coordinates>9.3667182898,56.4740691063</coordinates>
+						</Point>
+					</Placemark>
+					<Placemark id="118" >
+						<name>11 (118)</name>
+						<ExtendedData>
+							<Data name="cs:object-type" >
+								<value>Control</value>
+							</Data>
+							<Data name="cs:control-code" >
+								<value>118</value>
+							</Data>
+						</ExtendedData>
+
+						<Point>
+							<coordinates>9.3708112760,56.4734612913</coordinates>
+						</Point>
+					</Placemark>
+					<Placemark id="119" >
+						<name>12 (119)</name>
+						<ExtendedData>
+							<Data name="cs:object-type" >
+								<value>Control</value>
+							</Data>
+							<Data name="cs:control-code" >
+								<value>119</value>
+							</Data>
+						</ExtendedData>
+
+						<Point>
+							<coordinates>9.3773319931,56.4741055908</coordinates>
+						</Point>
+					</Placemark>
+					<Placemark id="120" >
+						<name>13 (120)</name>
+						<ExtendedData>
+							<Data name="cs:object-type" >
+								<value>Control</value>
+							</Data>
+							<Data name="cs:control-code" >
+								<value>120</value>
+							</Data>
+						</ExtendedData>
+
+						<Point>
+							<coordinates>9.3801641507,56.4727502019</coordinates>
+						</Point>
+					</Placemark>
+					<Placemark id="M" >
+						<name>(M)</name>
+						<ExtendedData>
+							<Data name="cs:object-type" >
+								<value>Finish</value>
+							</Data>
+							<Data name="cs:control-code" >
+								<value>M</value>
+							</Data>
+						</ExtendedData>
+
+						<Point>
+							<coordinates>9.3839054125,56.4733550173</coordinates>
+						</Point>
+					</Placemark>
+				</Folder>
+
+				<GroundOverlay id="SVG" >
+					<name>SVG</name>
+					<Icon>
+						<href>files/Canvas 2 Bane 3 - Kompaskorridor.SVG</href>
+					</Icon>
+					<gx:LatLonQuad>
+						<coordinates>
+							9.3521181147,56.4702175585 9.3863545414,56.4701157566 9.3864928271,56.4837265817 9.3522441470,56.4838284359
+						</coordinates>
+					</gx:LatLonQuad>
+					<LatLonBox>
+						<north>56.4837787896</north>
+						<south>56.4701677495</south>
+						<east>9.3864239290</east>
+						<west>9.3521792898</west>
+						<rotation>-0.3073104369</rotation>
+					</LatLonBox>
+				</GroundOverlay>
+
+			</Folder>
+
+		</Folder>
+
+	</Folder>
+
+</kml>

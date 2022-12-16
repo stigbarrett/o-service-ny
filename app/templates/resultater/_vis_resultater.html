@@ -1,0 +1,234 @@
+<link rel="stylesheet" href="https://unpkg.com/ag-grid-community/dist/styles/ag-grid.css">
+<link rel="stylesheet" href="https://unpkg.com/ag-grid-community/dist/styles/ag-theme-material.css">
+<div class="masonry-grid-item col pb-2 pb-lg-3">
+	<article class="card">
+	  <div class="card-body pb-2 px-10">
+			<h3 class="h4">Resultater og Stræktider</h3>
+			<p class="mb-4">
+				<form class="row g-4 needs-validation" novalidate id="form2" method="POST" method="GET">
+					<input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+					<div class="col-sm-6">
+						<label for="loeb" class="form-label fs-base">Vælg løb:</label>
+						<select class="form-select form-select-lg" data-customclass="form-select" id="loeb" name="loeb" required data-validate-field="loeb">
+							{% for item in loeb_alle %}
+							<option value="{{ item['id'] }}">{{ item['navn'] }}</option>
+							{% endfor %}
+						</select>
+						<div class="invalid-feedback">Vælg et løb fra listen!</div>
+					</div>
+						<!--{{ form1.hidden_tag() }} {{ render_form(form1)}} -->
+					<div class="col-sm-6">
+						<label for="bane" class="form-label fs-base">Vælg Bane:</label>
+						<select class="form-select form-select-lg" data-customclass="form-select" id="bane" name="bane" required data-validate-field="bane">
+							{% for bane in baner_alle %}
+							<option value="{{ bane['id'] }}">{{ bane['navn'] }}</option>
+							{% endfor %}
+						</select>
+						<div class="invalid-feedback">Vælg bane!</div>
+					</div>
+					<button type="button" id="knap1" class="btn-orange active" aria-pressed="true" onclick="resultat()">Vis resultater</button>          <button type="button" id="knap2" class="btn-orange active" aria-pressed="true" onclick="strakNy()">Vis stræktider</button>
+				</form>
+				<div class="col-sm-12">
+                    <div class="vertical-center">
+						<div id="myGrid" style="height:600px; width:100%" class="ag-theme-balham"></div>
+					</div>					
+                </div>
+			</p>
+	  </div>
+	</article>
+</div>
+
+	
+
+
+{% block scripts %}
+<script
+    src="https://code.jquery.com/jquery-3.6.1.js"
+    integrity="sha256-3zlB5s2uwoUzrXK3BT7AX3FyvojsraNFxCc2vC/7pNI="
+    crossorigin="anonymous">
+</script>
+<script src="https://cdn.jsdelivr.net/npm/ag-grid-enterprise/dist/ag-grid-enterprise.js"></script>
+
+<script src="https://unpkg.com/gridjs/dist/gridjs.umd.js"></script>	
+
+<script charset="utf-8" type="text/javascript">
+
+	var dropdownval = {
+			loebnr: $('#loeb'),
+			bane: $('#bane'),
+		};
+
+	var loebnrorg = dropdownval.loebnr.val();
+	var baneorg = dropdownval.bane.val();
+	//const url1 = "/resultater/_get_resultat_koltest/"+loebnrorg+"/"+baneorg;
+	//const url2 = "/resultater/_get_resultat_test/"+loebnrorg+"/"+baneorg;
+	var url3 = "/resultater/_get_resultat_data/"+loebnrorg+"/"+baneorg;
+	//const url3 = "/resultater/_get_grunddata/"+loebnrorg;
+	
+	//$.get(url3, function (data) {
+	//	console.log(data);
+	//	var element = document.getElementById("overskrift");
+	//	tekst = data+" "+baneorg+".";
+	//	element.innerHTML = tekst;
+	//});
+
+		var gridOptions = {
+			rowHeight : 50,
+			defaultColDef: {
+				filter: false,
+				cellRenderer: function(params) {
+					return params.value ? params.value : '';
+				},
+			},
+			sideBar: {
+				toolPanels: [
+				{
+					id: 'filters',
+					labelDefault: 'Filters',
+					labelKey: 'filters',
+					iconKey: 'filter',
+					toolPanel: 'agFiltersToolPanel',
+					toolPanelParams: {
+					suppressExpandAll: true,
+					suppressFilterSearch: true,
+					},
+				},
+				],
+				defaultToolPanel: '',
+			},
+		};
+		
+		function newGrid(url3) {
+			var gridDiv = document.querySelector('#myGrid');
+			var test = new agGrid.Grid(gridDiv, gridOptions);
+			agGrid.simpleHttpRequest({url: url3}).then(function(data) {
+				console.log(data);
+				var kolonner = data[0];
+				console.log(kolonner)
+				gridOptions.api.setColumnDefs(kolonner);
+				var raekker = data[1];
+				gridOptions.api.setRowData(raekker);
+			});
+		};
+
+		function recreateGrid(url3) {
+			gridOptions.api.destroy();
+			newGrid(url3);
+		};
+
+		function strakNy() {
+
+			var dropdownvalstrak = {
+				loebnrstrak: $('#loeb'),
+				banestrak: $('#bane'),
+			};
+			var loebnrorgstrak = dropdownvalstrak.loebnrstrak.val();
+			var baneorgstrak = dropdownvalstrak.banestrak.val();
+			//const url1 = "/resultater/_get_strak_koltest/"+loebnrorgstrak+"/"+baneorgstrak;
+			//const url2 = "/resultater/_get_strak_test/"+loebnrorgstrak+"/"+baneorgstrak;
+			//const url3 = "/resultater/_get_grunddata/"+loebnrorgstrak;
+			const url3 = "/resultater/_get_strak_data/"+loebnrorgstrak+"/"+baneorgstrak;
+			
+
+			$.get(url3, function (data) {
+				console.log(data);
+				var element = document.getElementById("overskrift");
+				tekst = data+" "+baneorgstrak+".";
+				element.innerHTML = tekst;
+			});
+			
+			recreateGrid(url3);
+		};
+
+		function resultat() {
+
+			dropdownvalresultat = {
+				loebnrresultat: $('#loeb'),
+				baneresultat: $('#bane'),
+			};
+			var loebnrorgresultat = dropdownvalresultat.loebnrresultat.val();
+			var baneorgresultat = dropdownvalresultat.baneresultat.val();
+			//const url1 = "/resultater/_get_resultat_koltest/"+loebnrorgresultat+"/"+baneorgresultat;
+			//const url2 = "/resultater/_get_resultat_test/"+loebnrorgresultat+"/"+baneorgresultat;
+			const url3 = "/resultater/_get_resultat_data/"+loebnrorgresultat+"/"+baneorgresultat;
+			//const url3 = "/resultater/_get_grunddata/"+loebnrorgresultat;
+			
+
+			$.get(url3, function (data) {
+				console.log(data);
+				var element = document.getElementById("overskrift");
+				tekst = data+" "+baneorgresultat+".";
+				element.innerHTML = tekst;
+			});
+
+			recreateGrid(url3);
+			};
+
+		//setup the grid after the page has finished loading
+		document.addEventListener('DOMContentLoaded', function() {
+			var dropdownvalresultat = {
+				loebnrresultat: $('#loeb'),
+				baneresultat: $('#bane'),
+			};
+			var loebnrorgresultat = dropdownvalresultat.loebnrresultat.val();
+			var baneorgresultat = dropdownvalresultat.baneresultat.val();
+			newGrid(url3);
+		});
+
+
+    $(function() {
+    
+        // jQuery selection for the 2 select boxes
+        var dropdown = {
+            loeb: $('#loeb'),
+            baner: $('#bane')
+        };
+    
+        // call to update on load
+        updateCounties();
+    
+        // function to call XHR and update county dropdown
+        function updateCounties() {
+            var send = {
+                loeb: dropdown.loeb.val()
+            };
+            dropdown.baner.attr('disabled', 'disabled');
+            dropdown.baner.empty();
+            $.getJSON("{{ url_for('resultater._get_baner') }}", send, function(data) {
+                data.forEach(function(item, index) {
+                    console.log(item);
+                    dropdown.baner.append(
+                            $('<option>', {
+                                value: item[0],
+                                text: item[1]
+                            })
+                    );
+
+                    if (index = 0) {
+                        console.log(item);
+                        updateBaner(item[0]);
+                        }
+                })
+                dropdown.baner.removeAttr('disabled');
+            });
+        };
+    
+        // event listener to state dropdown change
+        dropdown.loeb.on('change', function() {
+            updateCounties();
+        });
+    
+    });
+
+
+	//document.addEventListener('DOMContentLoaded', function() {
+	//	const url3 = "/resultater/_get_strak_data/"+loebnrorg+"/"+baneorg;
+	//	newGrid(url3);
+	//});
+</script>
+
+
+
+{% endblock scripts %}
+
+	

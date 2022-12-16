@@ -1,0 +1,63 @@
+{% extends "base_nav.html" %}
+{% from 'bootstrap5/nav.html' import render_nav_item, render_breadcrumb_item %}
+{% from 'bootstrap5/form.html' import render_form %}
+
+<div id="layoutDefault">
+    <div id="layoutDefault_content">
+        <main>    
+            {% block navbar %}
+                <nav class="navbar navbar-expand-lg bg-side-3 navbar-light">
+                    <div class="container">
+                        <a class="navbar-brand text-dark" href="{{url_for('main.index') }}">
+                            <img class="img-fluid" src="{{ url_for('static', filename='assets/img/logo.png') }}" width="200%" height="200%" alt="">
+                        </a>
+                        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><i data-feather="menu"></i></button>
+                        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                            <ul class="navbar-nav ms-auto me-lg-5">
+                                <li class="nav-item">{{ render_nav_item('main.explore', 'Forside') }}</li>
+                                <li class="nav-item">{{ render_nav_item('resultater.XMLvis_resultater', 'Resultater 2022') }}</li>
+                                <li class="nav-item">{{ render_nav_item('main.explore', 'Point 2022') }}</li>
+                                <li class="nav-item">{{ render_nav_item('main.explore', 'Resultat Arkiv') }}</li>
+                                <li class="nav-item">{{ render_nav_item('main.explore', 'Point Arkiv') }}</li>
+                                
+                                <!--<a class="nav-link">{{ render_nav_item('main.index', 'Ny orientering') }}></a>
+                                <li class="nav-item"><a class="nav-link" {{render_nav_item('main.explore', 'Explore') }}></a></li>-->
+                            </ul>
+                            <!--<a class="btn-teal btn rounded-pill px-4 ml-lg-4" href="https://shop.startbootstrap.com/sb-ui-kit-pro">Buy Now<i class="fas fa-arrow-right ml-1"></i></a>-->
+                            <ul class="navbar-nav ms-auto me-lg-5">
+                                {% if current_user.is_anonymous %}
+                                    <li class="nav-item"><a class="nav-link" href="{{ url_for('auth.login') }}">{{ _('Login') }}</a></li>
+                                {% else %}
+                                    <li class="nav-item"><a class="nav-link" href="{{ url_for('main.user', username=current_user.username) }}">{{ _('Profile') }}</a></li>
+                                    <li class="nav-item"><a class="nav-link" href="{{ url_for('auth.logout') }}">{{ _('Logout') }}</a></li>
+                                {% endif %}
+                            </ul>
+                        </div>
+                    </div>
+                </nav>
+                <section class="bg-side-2 py-2">
+                    
+                    <div class="container"> 
+                        <nav style="--bs-breadcrumb-divider: ' ';" aria-label="breadcrumb">
+                            
+                            <ol class="breadcrumb">
+                               
+                                {% block breadcrumb %}
+                                
+                                    {{ render_breadcrumb_item('resultater.XMLvis_resultater', 'Resultater 2022') }}
+                                    {{ render_breadcrumb_item('main.explore', 'Point 2022') }}
+                                    {{ render_breadcrumb_item('main.explore', 'Resultat Arkiv') }}
+                                    {{ render_breadcrumb_item('main.explore', 'Point Arkiv') }}
+                                  
+                                {% endblock breadcrumb %}
+                                
+                            </ol>
+                            
+                        </nav>
+                    </div>
+                    
+                </section>
+            {% endblock navbar %}
+        </main>
+    </div>
+    

@@ -1,0 +1,96 @@
+{# templates/_navigation.html #}
+
+<header class="header navbar navbar-expand-lg bg-light shadow-sm shadow-dark-mode-none fixed-top">
+    <div class="container px-3">
+              <a href="{{ url_for('main.index') }}" class="navbar-brand pe-3">
+                <img src="{{ url_for('static', filename='assets_old/img/logo.png') }}" width="47" alt="O-service">
+              </a>
+        <div id="navbarNav" class="offcanvas offcanvas-end">
+            <div class="offcanvas-header border-bottom">
+              <h5 class="offcanvas-title">Menu</h5>
+              <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+            </div>
+            <div class="offcanvas-body">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <li class="nav-item">{{ render_nav_item('main.explore', 'Forside') }}</li>
+                {% if current_user.is_authenticated == True %}
+                <li class="nav-item">{{ render_nav_item('main.index', 'O-Microblog') }}</li>
+                {% endif %}
+                <li class="nav-item dropdown">
+                  <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" data-bs-auto-close="outside" aria-expanded="false">Tilmeldinger</a>
+                  <ul class="dropdown-menu">
+                    <li><a class="dropdown-item"></a></li>
+                    {% if current_user.is_authenticated == True %}
+                    <li><a href="{{ url_for('tilmelding.tilmeld') }}" class="dropdown-item">Tilmelding</a></li>
+                    
+                    <li><a href="{{ url_for('tilmelding.ret_tilmeldte') }}" class="dropdown-item">Ret tilmeldte</a></li>
+                    {% endif %}
+                    <li><a href="{{ url_for('tilmelding.alleTilmeldte') }}" class="dropdown-item">Alle tilmeldte</a></li>
+                    
+                  </ul>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Resultater</a>	
+                    <div class="dropdown-menu">
+                        <div class="d-lg-flex pt-lg-3">
+                            <div class="mega-dropdown-column">
+                            <ul class="list-unstyled mb-3">
+                                <li><a href="{{ url_for('resultater.resultater') }}" class="dropdown-item py-1">Resultater</a></li>
+                                {% if current_user.is_authenticated == True %}
+                                <li><a href="{{ url_for('resultater.hent_GPX_fil') }}" class="dropdown-item">Tilføj GPX fil</a></li>
+                                {% endif %}
+                                <li><a href="{{ url_for('resultater.vis_spor') }}" class="dropdown-item">Se spor</a></li>
+                            </ul>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+                {% if current_user.is_authenticated == True %}
+                <li class="nav-item dropdown">
+                  <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" data-bs-auto-close="outside" aria-expanded="false">Statistik</a>
+                    <ul class="dropdown-menu">
+                    <li><a class="dropdown-item"></a></li>
+                    <a href="{{ url_for('resultater.resultater') }}" class="dropdown-item py-1">Statistik</a>
+                    </ul>
+                </li>
+                {% endif %}
+                {% if current_user.is_authenticated == True and g.adm==1 %}
+
+                <li class="nav-item dropdown">
+                  <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" data-bs-auto-close="outside" aria-expanded="false">Administration</a>
+                    <ul class="dropdown-menu">
+                      <li><a class="dropdown-item"></a></li>
+                      <a href="{{ url_for('administration.opretlob') }}" class="dropdown-item py-1">Opret løb</a>
+                      <li><a class="dropdown-item"></a></li>
+                      <a href="{{ url_for('administration.tilfoj_kort') }}" class="dropdown-item py-1">Tilføj kort</a>
+                      <li><a class="dropdown-item"></a></li>
+                      <a href="{{ url_for('administration.ret_loeb') }}" class="dropdown-item py-1">Rediger oprettet løb</a>
+                      <li><a class="dropdown-item"></a></li>
+                      <a href="{{ url_for('administration.tilfoj_resultat') }}" class="dropdown-item py-1">Tilføj resultat (eresultlite)</a>
+                  </ul>
+                </li>
+                {% endif %}
+              </ul>
+            </div>
+        </div>
+        
+        {% if current_user.is_anonymous %}
+        <a href="{{ url_for('auth.login') }}" class="btn btn-primary btn-sm fs-sm rounded my-3 my-lg-0">
+                    <i class="bx bx-user fs-lg me-2"></i>
+                    {{ _('Login') }}
+                  </a>
+        {% else %}
+        <a href="{{ url_for('main.user', username=current_user.username) }}" class="btn btn-primary btn-sm fs-sm rounded my-3 my-lg-0">
+                    <i class="bx bx-user fs-lg me-2"></i>
+                    {{ _('Profil') }} 
+                  </a>
+        <a href="{{ url_for('auth.logout') }}" class="btn btn-primary btn-sm fs-sm rounded my-3 my-lg-0">
+                    <i class="bx bx-user fs-lg me-2"></i>
+                     {{ _('Logud') }}
+                  </a>
+        {% endif %}
+        <button type="button" class="navbar-toggler" data-bs-toggle="offcanvas" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+    </div>
+</header>

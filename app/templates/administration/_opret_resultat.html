@@ -1,0 +1,73 @@
+<!-- Item -->
+<div class="masonry-grid-item col pb-2 pb-lg-3">
+	<article class="card">
+	    <div class="card-body">
+            <h3 class="card-title pb-3 mb-4">Indsend resultat</h3>
+            <form class="row g-4 needs-validation" validate  method="post" enctype="multipart/form-data">
+                <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+                <div class="col-sm-6">
+                    <label for="loeb" class="form-label fs-base">Vælg løb:</label>
+                        <select class="form-select form-select-lg" data-customclass="form-select" id="loeb" name="loeb" required data-validate-field="loeb">
+                            {% for item in loeb_alle %}
+                                <option value="{{ item['id'] }}">{{ item['navn'] }}</option>
+                            {% endfor %}
+                        </select>
+                    <div class="invalid-feedback">Vælg et løb fra listen!</div>
+                </div>
+                <div class="col-sm-6">
+                    <label for="klub" class="form-label fs-base">Vælg klub</label>
+                        <select class="form-select form-select-lg" data-customclass="form-select" id="klub" name="klub" required data-validate-field="klub">
+                            {% for key1, value1 in klubber.items() %}
+                                {%if klub %}
+                                    {% if klub in key1 %}
+                                        <option value="{{ key1 }}" selected>{{ value1 }}</option>
+                                    {% else %}
+                                        <option value= "{{ key1 }}">{{ value1 }}</option>
+                                    {% endif %}
+                                {% else %}
+                                    <option value= "{{ key1 }}">{{ value1 }}</option>
+                                {%endif %}
+                            {% endfor %}
+                        </select>
+                    <div class="invalid-feedback">Vælg en klub fra listen!</div>
+                </div>
+                <div class="col-sm-6">
+                    <label for="type" class="form-label fs-base">type af konkurrence</label>
+                    <select class="form-select form-select-lg" data-customclass="form-select" id="type" name="type">
+                        <option value="vikaski" selected>ViKaSki</option>
+                        <option value="ifkar">Ifkar</option>
+                    </select>
+                </div>
+                <div class="col-sm-6">
+                    <label for="indberetter" class="form-label fs-base">Indberetter</label>
+                    <input class="form-control form-control-lg" type="text" name="indberetter" id="indberetter" required data-validate-field="indberetter">
+                    <div class="invalid-feedback">Indtast indberetters navn!</div>
+                </div>
+                <div class="col-sm-6">
+                    <label for="otrack" class="form-label fs-base">O-Track link</label>
+                    <input class="form-control form-control-lg" type="text" name="otrack" id="otrack" required data-validate-field="otrack">
+                    <div class="invalid-feedback">Indtast link id til otrack!</div>
+                </div>
+                <div class="col-sm-6">
+                    <label class="form-label">Data format</label>
+                    <select class="form-select form-select-lg" data-customclass="form-select" name="data_format" id="data_format" >
+                        <option value="eresult" selected>eResults Lite 3.x</option>
+                        <option value="IOF xml">IOF XML</option>
+                </div>
+
+                <div class="col-sm-12">
+                    <label class="form-label">Tilføj resultatfil.</label>
+                    <input type="file" id="file" name="file" accept=".dat">
+                </div>
+                
+            
+                <div class="text-center">
+                    <button class="btn btn-primary" id="submit_1" type="submit" >Indsend resultat</button>
+                </div>
+                
+            </form>
+		</div>
+    </article>
+</div>
+<!--<script src="https://cdn.jsdelivr.net/npm/vanillajs-datepicker@1.2.0/dist/js/datepicker.min.js"></script>
+<script src="{{ url_for('static', filename='datepicker/locales/da.js') }}"></script>-->

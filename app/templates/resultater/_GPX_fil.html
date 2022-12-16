@@ -1,0 +1,72 @@
+<div class="masonry-grid-item col pb-2 pb-lg-3">
+	<article class="card">
+	  <div class="card-body pb-1 px-10">
+		<h3 class="h4">GPX fil fra Garmin, Strava e.l.</h3>
+		<p class="mb-4">
+			<form class="row g-4 needs-validation" novalidate id="form2" method="POST" method="GET" enctype="multipart/form-data">
+                <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+                <div class="col-sm-8">
+                    <label class="form-label">Vælg løb</label>
+                    <select data-customclass="form-select" id="loeb" name="loeb">
+                        {% for key, value in loeb_alle.items() %}
+                            <option value="{{ key }}">{{ value }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+                <div class="col-sm-8">
+                    <label class="form-label">(Fornavn og Efternavn)</label>
+                    <input class="text" type="search" name="autoComplete1" autocomplete=off id="autoComplete1" value="{{ navn }}" data-validate-field="autoComplete1">
+                    <!--<input class="autoComplete_wrapper" type="search" name="autoComplete1" autocomplete=off id="autoComplete1" value="{{ navn }}" data-validate-field="autoComplete1">-->
+                    <!--<div class="invalid-feedback">Indtast dit fulde navn!</div>    -->
+                </div>
+                
+                <div class="col-sm-5">
+                    <label class="form-label">Bane du løb:</label>
+                    <select data-customclass="form-select" id="baner" name="baner">
+                        {% for key, value in baner_alle.items() %}
+                            <option value="{{ key }}">{{ value }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+                
+                <div class="col-sm-5">
+                    <!--<label for="klub" class="form-label fs-base">Klub</label>-->
+                    <label class="form-label">Klub</label>
+                    <select data-customclass="form-select" id="klub" name="klub">
+                        {% for key1, value1 in klubber.items() %}
+                            {% if klub in value1 %}
+                            <option value="{{ key1 }}" selected>{{ value1 }}</option>
+                            {% else %}
+                            <option value="{{ key1 }}">{{ value1 }}</option>
+                            {% endif %}
+                        {% endfor %}
+                    </select>
+                </div>
+                <!--<div class="col-sm-5">
+                    <label class="form-label">Navn</label>
+                    <input type="text" id="navn" name="navn" class="form-control" value="{{ navn }}" />
+                </div>-->
+                
+                <!--<div class="col-md-5">
+                    <label class="form-label">Klub</label>
+                    <input type="text" id="klub" name="klub" class="form-control" value="{{ klub }}" />
+                </div>-->
+                <div class="col-sm-5">
+                    <label class="form-label">Tilføj GPX fil</label>
+                    <input type="file" id="GPX_file" name="GPX_file" accept=".gpx">
+                </div>
+                <div class="text-center">
+                    <button class="btn btn-primary" id="submit" type="submit" >Tilføj GPX fil</button>
+                </div>
+                
+            </form>
+		</p>
+	</article>
+</div>
+
+<script>
+
+    
+
+
+</script>

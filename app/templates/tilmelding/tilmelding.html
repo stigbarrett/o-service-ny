@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+{% extends "base.html" %}
+
+{% block app_content %}
+<link rel="stylesheet" href="{{ url_for('static', filename='tab.css') }}">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tarekraafat/autocomplete.js@10.2.7/dist/css/autoComplete.01.min.css">
+<!--<link rel="stylesheet" href="{{ url_for('static', filename='css/autoComplete.01.css') }}">-->
+<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/bs5/dt-1.11.4/datatables.min.css"/>
+<!--<link href="https://cdn.jsdelivr.net/npm/simple-datatables@latest/dist/style.css" rel="stylesheet" type="text/css">-->
+<!-- Page content -->
+<!-- section giver luft under menu -->
+
+
+<h1 class="text-nowrap mb-md-4 pe-md-5"></h1>
+
+<section class="container mt-2 mt-sm-3 py-md-3 py-lg-5">
+    <div class="row">
+        <div class="col-xl-12 col-lg-12">
+            <div class="pe-xl-5">
+                <div class="masonry-grid row row-cols-sm-2 row-cols-1 g-4">
+                    {% include 'tilmelding/_tilmelding.html' %}
+                    {% include 'tilmelding/_kort.html' %}
+                <!--</div>
+                <div class="masonry-grid row row-cols-sm-1 row-cols-1 g-8">-->
+                    {% if user == 'anonym' %}
+                    {% else %}
+                        {% include 'tilmelding/_tilmeldte.html' %}
+                    {% endif %}
+                </div>    
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock app_content %}
+
+
+{% block scripts %}
+    {{ super() }}
+
+    <!--<script src="https://cdn.jsdelivr.net/npm/simple-datatables@latest" type="text/javascript"></script>-->
+    <script
+        src="https://code.jquery.com/jquery-3.6.1.js"
+        integrity="sha256-3zlB5s2uwoUzrXK3BT7AX3FyvojsraNFxCc2vC/7pNI="
+        crossorigin="anonymous">
+    </script>
+    <script type="text/javascript" src="https://cdn.datatables.net/v/bs5/dt-1.11.4/datatables.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@tarekraafat/autocomplete.js@10.2.7/dist/autoComplete.js"></script>
+    <!--<script src="{{ url_for('static', filename='js/forms-autocomplete.js') }}"></script>-->
+    <!--<script src="https://cdn.jsdelivr.net/gh/xcash/bootstrap-autocomplete@v2.3.7/dist/latest/bootstrap-autocomplete.min.js"></script>-->
+    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.js"></script>
+    <script src="https://code.jquery.com/ui/1.13.1/jquery-ui.js"></script>
+    <script src="{{ url_for('static', filename='assets/vendor/shufflejs/dist/shuffle.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='assets/vendor/imagesloaded/imagesloaded.pkgd.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='assets/vendor/lightgallery/lightgallery.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='assets/vendor/lightgallery/plugins/video/lg-video.min.js') }}"></script>
+    
+    
+
+    <script type="text/javascript">
+        function reply_click(element) {
+            document.getElementById('bane').value = element.getAttribute('data-product-name');
+            document.getElementById('submit_1').disabled = false
+        };       
+        
+        function clear_data(element) {
+            var elements = document.getElementById("form1").elements;
+            var tilmeld_flere = document.getElementById("flere").value;
+            console.log(tilmeld);
+                //console.log('rens data');
+                for (var i = 0, element; element = elements[i++];) {
+                    if (element.type === "text")
+                        element.value = ''
+                };
+                
+                console.log(tilmeld);
+                if (tilmeld_flere === "0") {
+                    document.getElementById('submit_1').disabled = false
+                };
+                
+            };
+        
+        document.getElementById("submit_1").onclick = function () {
+            add_tilmeldte();
+            var aktivt_loeb = document.getElementById("loebhidden").value;
+            tableActions(aktivt_loeb);
+            autoAction(aktivt_loeb);
+        }
+
+        function initTable () {
+                var tilmelderId = document.getElementById("deltagerhidden").value;
+                var loebId = document.getElementById("loebhidden").value;
+                var send = {
+					konkurrence: loebId,
+                    tilmelder: tilmelderId 
+				};
+            return jQuery('#data').DataTable( {
+                    language: {
+                        url: '//cdn.datatables.net/plug-ins/1.11.4/i18n/da.json'
+                    },
+                    destroy: true,
+                    ajax: {
+                        url: "{{url_for('tilmelding.get_deltagere')}}",
+                        type: "GET",
+                        data: send,
+                        datatype: "JSON",
+                        dataSrc: "data",
+                        contentType: "application/json"
+                    },
+                    columns: [
+                    {data: 'Navn'},
+                    {data: 'Klub'},
+                    {data: 'Bane'},
+                    {data: 'Brik'}
+                    ],
+                });
+            };
+
+        function nyTable () {
+            var table = initTable();
+            };
+            
+        function tableActions (aktivt_loeb) { 
+            setTimeout(function() {
+                const tilmeld_flere = document.getElementById("flere").value;
+                
+                console.log("flere");
+                console.log(tilmeld_flere);
+                console.log(aktivt_loeb)
+                if (tilmeld_flere == 0) {
+                    console.log("if");
+                };
+                var table = initTable();
+                //document.getElementById('navn').value = '';
+                document.getElementById('email').value = '';
+                document.getElementById('briknummer').value = '';
+                document.getElementById('telefonnummer').value = '';
+                document.getElementById('bane').value = '';
+                document.getElementById('autoComplete1').value = '';
+                document.getElementById("profileid").value = '';
+                if (tilmeld_flere == 0) {
+                    document.getElementById("submit_1").style.visibility = "hidden";
+                    document.getElementById("submit_1").style.display = "none";
+                    document.getElementById('submit_1').disabled = false;
+                };
+                nyTable();}, 2000);
+            };
+
+        async function autoAction (aktivt_loeb) {
+            let users = await getUsers(aktivt_loeb);
+            console.log("her kommer users");
+            console.log(users);
+            const autoCompleteJS1 = new autoComplete({
+                selector: "#autoComplete1",
+                wrapper: true,
+                data: {
+                    src: users,
+                    keys: ['id','Navn'],
+                    cache: true,
+                },
+                placeholder: "Start indtast....",
+                resultItem: {
+                    highlight: true,
+                },
+                events: {
+                    input: {
+                        selection: (event) => {
+                            const selection = event.detail.selection.value;
+                            autoCompleteJS1.input.value = selection.Navn;
+                            getUserData(selection.id);  
+                        }
+                    }
+                }
+            });
+        };
+        
+        function add_tilmeldte() {
+
+            csfr_token = "{{ csrf_token() }}";
+            loebId = document.getElementById("loebhidden").value;
+            tilmelderId = document.getElementById("deltagerhidden").value;
+            console.log(tilmelderId);
+            console.log('tilemlderid');
+            navn = document.getElementById("autoComplete1").value;
+            klub = document.getElementById("klub").value;
+            email = document.getElementById("email").value;
+            briknummer = document.getElementById("briknummer").value;
+            telefonnummer = document.getElementById("telefonnummer").value;
+            tilmeldtId = document.getElementById("loberhidden").value;
+            tilmeldt_status = document.getElementById("tilmeldthidden").value;
+            bane = document.getElementById("bane").value;
+            profilid = document.getElementById("profileid").value;
+            status_profil = document.getElementById("status_profileid").value;
+            flere = document.getElementById("flere").value;
+            let url = "{{url_for('tilmelding.add_tilmeld1')}}";
+            console.log(loebId);
+            const res = fetch(url, {
+                    method: "POST",
+                    headers: new Headers({
+                        "Content-Type": "application/json",
+                        'X-CSRF-TOKEN':  csfr_token
+                    }),
+                    body: JSON.stringify({
+                        loebId: loebId,
+                        tilmelderId: tilmelderId,
+                        navn: navn,
+                        klub: klub,
+                        bane: bane,
+                        email: email,
+                        briknummer: briknummer,
+                        telefonnummer: telefonnummer,
+                        tilmeldtId: tilmeldtId,
+                        tilmeldt_status: tilmeldt_status,
+                        profileid: profilid,
+                        status_profilid : status_profil,
+                        tilmeld_flere: flere,
+
+                    }),
+                    cache: "no-cache",
+                    
+                })
+                .then(response => {
+                        if(response.status == 200){
+                            return response.json();
+                        } else {
+                            console.log("fejl");
+                        }
+                    }).then(json => {
+                        console.log('Success! ' + JSON.stringify(json));
+                        var tilbage = JSON.stringify(json);
+                        console.log(tilbage);
+                        if ( document.getElementById("deltagerhidden").value == 'Falsk') {
+                            document.getElementById('deltagerhidden').value = tilbage;
+                            document. getElementById('loberhidden').value = tilbage;
+                        };
+                        
+                    }).catch(error => {
+                        console.log('error with access token req!' + error);
+                    });
+                (document.getElementById('status_profileid').value = '');
+                alert('Din tilmelding er oprettet!');
+            };
+
+        async function getUsers(aktivt_loeb) {
+            //let url = "{{url_for('tilmelding.get_tilmeldte', aktivt_loeb='aktivtlob')}}".replace("aktivtlob", aktivt_loeb);
+            let url = "{{url_for('tilmelding.get_alle_tilmeldte', aktivt_loeb='aktivtlob')}}".replace("aktivtlob", aktivt_loeb);
+            try {
+                let res = await fetch(url);
+                console.log("Stig")
+                console.log(res);
+                return await res.json();
+               
+                } catch (error) {
+                    console.log(error);
+                }
+            };
+
+        async function getUserData(user) {
+            //let url = "{{url_for('tilmelding.get_tilm_deltager', user_id='idher')}}".replace("idher", user);
+            let url = "{{url_for('tilmelding.profildata', profil_id='idher')}}".replace("idher", user);
+            var status_profilId = document.getElementById('status_profileid').value;
+            try {
+                let deltdata = await fetch(url);
+                let userdata = await deltdata.json();
+                document.getElementById('email').value = await userdata[0].email;
+                document.getElementById('briknummer').value = await userdata[0].briknummer;
+                document.getElementById('klub').value = await userdata[0].klubid;
+                document.getElementById('telefonnummer').value = await userdata[0].telefonnummer;
+                document.getElementById('loberhidden').value = await userdata[0].tilmeldtId;
+                document.getElementById('profileid').value = await userdata[0].id;
+                if (status_profilId == "Falsk") {
+                    document.getElementById('status_profileid').value = await userdata[0].id;
+                };
+                
+                //return await deltdata.json();
+                //console.log(userdata);
+            } catch (error) {
+                console.log(error);
+            }
+        };
+
+        jQuery(document).ready(function() {
+            nyTable();
+            var aktivt_loeb = document.getElementById("loebhidden").value;
+            var taller = 0;
+            //console.log('Her');
+            autoAction(aktivt_loeb);
+        });
+
+    </script>
+{% endblock scripts %}
