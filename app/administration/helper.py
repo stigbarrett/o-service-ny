@@ -37,7 +37,6 @@ import shutil
 plt.rcParams['axes.spines.top'] = False
 plt.rcParams['axes.spines.right'] = False
 
-SENDGRID_API_KEY="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"
 
 def bruger_opl():
     pass
